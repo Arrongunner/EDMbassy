@@ -227,7 +227,7 @@ EDMbassyModel = Class.extend({
 			$('#button-vote-positive').click();
 		}
 		this.saveSettings();
-	};
+	},
 	//what happens when the autoqueue is clicked
 	autoqueueClick: function() {
 		this.settings.autoqueue = !this.settings.autoqueue;
