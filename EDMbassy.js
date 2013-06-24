@@ -130,7 +130,7 @@ EDMbassyModel = Class.extend({
 	  		roomSkip:		$.proxy(this.roomSkip,		this),
 	  		populateUserlist:	$.proxy(this.populateUserlist,	this),
 			strobeListener:		$.proxy(this.strobeListener,	this),
-		},
+		}
 	},
 	settings: {
 		autowoot:	false,
