@@ -96,7 +96,7 @@ var scripts = [
 ];
 
 
-//bulk of the coding for the script to make it easier to read and edit in the condole
+//bulk of the coding for the script to make it easier to read and edit in the console
 EDMbassyModel = Class.extend({
 	init: function() {
 		//set up proxies used later on in the script
@@ -153,10 +153,8 @@ EDMbassyModel = Class.extend({
 	loadSettings: functnion() {
 		if (localStorage.EDMbassy === undefined) return;
 		var save = JSON.parse(localStorage.EDMbassy);
-		for i in this.settings) {
-			if (save[i] !== undefined) {
-				this.settings[i] = save[i];
-			}
+		for (var i in this.settings) {
+			if (save[i] !== undefined) this.settings[i] = save[i];
 		}
 	},
 	//function to save settings
