@@ -216,7 +216,7 @@ EDMbassyModel = Class.extend({
 		$('#EDMbassy-btn-' + id).click(callback);
 	},
 	//changes the settings button colours when clicked
-	changeSettBtnColor: function(id, value);
+	changeSettBtnColor: function(id, value) {
 		$('#plugcubed-btn-' + id).find('[style^="color:"], [style*=" color:"]').attr('style','color:' + (value === true ? '#3FFF00' : '#ED1C24'));
 	},
 	//what happens when the autowoot is clicked
