@@ -444,7 +444,6 @@ EDMbassyModel = Class.extend({
 	},
 	//what happens when the next DJ plays
 	djAdvanced: function() {
-		setTimeout("autoSkip", 6000);
 		if (this.settings.autowoot) {
 			setTimeout("$('#button-vote-positive').click();", 7000);
 		}
