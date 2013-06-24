@@ -131,13 +131,13 @@ EDMbassyModel = Class.extend({
 	  		populateUserlist:	$.proxy(this.populateUserlist,	this),
 			strobeListener:		$.proxy(this.strobeListener,	this),
 		},
-		//loads settings
-		this.loadSettings();
-		//loads API listners
-		this.initAPI();
-		//loads UI buttons
-		this.initUI();
 	},
+	//loads settings
+	setTimeout("this.loadSettings();", 6000);
+	//loads API listners
+	setTimeout("this.initAPI();", 6000);
+	//loads UI buttons
+	setTimeout("this.initUI();", 6000);
 	//settings
 	settings: {
 		autowoot:	false,
