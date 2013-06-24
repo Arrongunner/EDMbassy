@@ -3,19 +3,41 @@
 //LOAD THE BUTTONS, THEN DO EDMbass.settings IT SHOWS THAT AUTOWOOT WAS ON (ALTHOUGH THE DEFAULT IT OFF) I WILL TRY
 //TO FIX THIS THE BEST I CAN OVER THE NEXT FEW DAYS :/
 
+/*
+problems and working elements:
+
+	the userlist on the left side actually loads BUT cannot open it
+	buttons on the right hand side do not load, when manually loaded colours do not show, nor change when clicked
+	autowoot appears to work
+	autoqueue appears to work
+	stream works
+	emoticons switch off does not work
+	hide video does not work
+	message buttons work along with status buttons (assuming the moderation buttons work also)
+	API listeners MUST be working or the userlist would not work
+	all timers do not work
+	
+	UPDATE: API's are not working even though they were previously (although it tells me the users in the
+	room which uses an API to get) which means the userlist does not
+	
+	
+*/
 //needed for the 4 timers in the script
 var clickTimer = 	null;
 var clicked = 		false;
 var clickPassed =	0;
 var clickToWait =	5000;
+
 var skipTimer =		null;
 var skipped =		false;
 var skipPassed =	0;
 var skipToWait =	2000;
+
 var mentionTimer =	null;
 var mentioned =		false;
 var mentionPassed =	0;
 var mentionToWait =	120000;
+
 var boothWaitTimer =	null;
 var boothWaiting =	false;
 var boothWaitPassed =	0;
