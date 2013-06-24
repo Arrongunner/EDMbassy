@@ -582,7 +582,7 @@ EDMbassyModel = Class.extend({
 			clickPassed = 0;
 		}
 		else {
-			clickPassed clickPassed + 1000;
+			clickPassed = clickPassed + 1000;
 		}
 	},
 	//if one of the skip buttons is clicked, this timer kicks in
