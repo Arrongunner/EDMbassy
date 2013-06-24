@@ -132,11 +132,11 @@ EDMbassyModel = Class.extend({
 			strobeListener:		$.proxy(this.strobeListener,	this),
 		},
 		//loads settings
-		setTimeout("this.loadSettings();", 6000);
+		this.loadSettings();
 		//loads API listners
-		setTimeout("this.initAPI();", 6000);
+		this.initAPI();
 		//loads UI buttons
-		setTimeout("this.initUI();", 6000);
+		this.initUI();
 	},
 	//settings
 	settings: {
