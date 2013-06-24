@@ -150,12 +150,12 @@ EDMbassyModel = Class.extend({
 		left:		false,
 	},
 	//funtion to load settings
-	loadSettings: functnion() {
-		if (localStorage.EDMbassy === undefined) return;
-		var save = JSON.parse(localStorage.EDMbassy);
-		for (var i in this.settings) {
-			if (save[i] !== undefined) this.settings[i] = save[i];
-		}
+	loadSettings: function() {
+        	if (localStorage.EDMbassy === undefined) return;
+        	var save = JSON.parse(localStorage.EDMbassy);
+        	for (var i in this.settings) {
+            		if (save[i] !== undefined) this.settings[i] = save[i];
+        	}
 	},
 	//function to save settings
 	saveSettings: function() {
