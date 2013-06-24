@@ -132,6 +132,7 @@ EDMbassyModel = Class.extend({
 			strobeListener:		$.proxy(this.strobeListener,	this),
 		}
 	},
+	//settings
 	settings: {
 		autowoot:	false,
 		autoqueue: 	false,
@@ -612,12 +613,11 @@ EDMbassyModel = Class.extend({
 		}
 	},
 	//loads settings
-	setTimeout("this.loadSettings();", 6000);
+	this.loadSettings();
 	//loads API listners
-	setTimeout("this.initAPI();", 6000);
+	this.initAPI();
 	//loads UI buttons
-	setTimeout("this.initUI();", 6000);
-	//settings
+	this.initUI();
 });
 var EDMbassy = new EDMbassyModel();
 log("Also, welcome to The EDMbassy, coded by Nitro Ghost. Version: 4.1.5");
