@@ -20,12 +20,10 @@ var boothWaitPassed =	0;
 
 //click send message
 var rulesMsg = "/me Rules: 1) No spamming 2) No posting lewd content (pictures/videos/doujins) ect. 3) No songs over 7 minutes unless under certain conditions (A featured artist playing a mix.) 4) Please speak English. Have fun!";
-var fbMsg = ["/me Check out the promoters on their youtube channels! HDmusicNexus: http://www.youtube.com/HDmusicNexus HDdubRAVE3: http://www.youtube.com/HDdubRave3 HDMusicGirl:http://www.youtube.com/TheHDMusicGirl"];
-var enMsg = ["English only in chat please!", "Please could you talk in English."];
-var skipMsg = ["Please do not ask to skip songs.", "Asking to skip songs can lead to being kicked!"];
+var linksMsg = ["/me Check out the promoters on their youtube channels! HDmusicNexus: http://www.youtube.com/HDmusicNexus HDdubRAVE3: http://www.youtube.com/HDdubRave3 HDMusicGirl:http://www.youtube.com/TheHDMusicGirl"];
+var skipsMsg = ["Please do not ask to skip songs.", "Asking to skip songs can lead to being kicked!"];
 var fansMsg = ["Please do not ask for fans.", "Earn your fans like the rest of us."];
-var wafflesMsg = ["WAFFLES FOR EVERYONE!! #-(>_<)-#", "did somebody say WAFFLES? #-(>_<)-#", "cheese ca- I mean WAFFLES TIME! #-(>_<)-#", "do you know what it is time for? WAFFLES #-(>_<)-#"];
-var bhvMsg = ["please be appropriate in the chat", "please do not talk like that, control yourself!",  "please be mature in the chat guys"];
+var wflsMsg = ["WAFFLES FOR EVERYONE!! #-(>_<)-#", "did somebody say WAFFLES? #-(>_<)-#", "cheese ca- I mean WAFFLES TIME! #-(>_<)-#", "do you know what it is time for? WAFFLES #-(>_<)-#"];
 var sleepMsg = ["Bye, i am out for today!", "Going to sleep now.", "Bed time!", "tiredness... taking... over... must sleep"];
 var workMsg = ["I'm working so mention me if I'm needed.", "I'm going to be busy for a while, mention if needed."];
 var afkMsg = ["Stepping away for a moment.", "Going AFK for a while, be back soon!"];
@@ -306,7 +304,7 @@ EDMbassyModel = Class.extend({
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			API.sendChat(fansMsg[Math.floor(Math.random() * fansMsg.Length]);
+			API.sendChat(fansMsg[Math.floor(Math.random() * fansMsg.length)]);
 		}
 	},
 	//what happens when the skips button is clicked
@@ -314,7 +312,7 @@ EDMbassyModel = Class.extend({
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			API.sendChat(skipsMsg[Math.floor(Math.random() * skipsMsg.Length]);
+			API.sendChat(skipsMsg[Math.floor(Math.random() * skipsMsg.length)]);
 		}
 	},
 	//what happens when the waffles is clicked
@@ -322,7 +320,7 @@ EDMbassyModel = Class.extend({
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			API.sendChat(wflsMsg[Math.floor(Math.random() * wflsMsg.Length]);
+			API.sendChat(wflsMsg[Math.floor(Math.random() * wflsMsg.length)]);
 		}
 	},
 	//what happens when the sleep status button is clicked
