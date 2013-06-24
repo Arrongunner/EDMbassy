@@ -180,20 +180,20 @@ EDMbassyModel = Class.extend({
 		this.addSettBtn(this.settings.hideVideo,	'hideVideo',	'Toggles Hide Video',	'Hide Video',		this.proxy.menu.hideVideoClick);
 		this.addSettBtn(this.settings.emotes,		'emotes',	'Toggles Emoticons',	'Emoticons',		this.proxy.menu.emotesClick);
 		this.addSettBtn(this.settings.audience,		'audience',	'Toggles Audience',	'Audience',		this.proxy.menu.audienceClick);
-		this.addMsgsBtn('rules',			'Sends Rules Message In Chat',		'Rules'			this.proxy.menu.rulesClick);
-		this.addMsgsBtn('links',			'Sends Links Message In Chat',		'Links'			this.proxy.menu.linksClick);
-		this.addMsgsBtn('fans',				'Sends No Fans Message In Chat',	'No Fans'		this.proxy.menu.fansClick);
-		this.addMsgsBtn('skip',				'Sends No Skip Message In Chat',	'No Skip'		this.proxy.menu.skipsClick);
-		this.addMsgsBtn('waffles',			'Sends Waffles Message In Chat',	'Waffles'		this.proxy.menu.wafflesClick);
-		this.addStatBtn('sleep',			'Sets Status to Sleeping',		'Sleeping'		this.proxy.menu.sleepClick);
-		this.addStatBtn('work',				'Sets Status to Working',		'Working'		this.proxy.menu.workClick);
-		this.addStatBtn('afk',				'sets Status to AFK',			'AFK'			this.proxy.menu.AFKClick);
-		this.addStatBtn('back',				'sets Status to Available',		'Available'		this.proxy.menu.backClick);
-		this.addStatBtn('idle',				'sets Status to Idle',			'Idle'			this.proxy.menu.idleClick);
-		this.addModsBtn('skip',				'Skips Current DJ',			'Skip'			this.proxy.menu.skipClick);
-		this.addModsBtn('lock',				'Locks Booth',				'Lock'			this.proxy.menu.lockClick);
-		this.addModsBtn('unlock',			'Unlocks Booth',			'Unlock'		this.proxy.menu.unlockClick);
-		this.addModsBtn('lockskip',			'Skips DJ and Adds Back to Booth',	'Lockskip'		this.proxy.menu.lockskipClick);
+		this.addMsgsBtn('rules',			'Sends Rules Message In Chat',		'Rules',			this.proxy.menu.rulesClick);
+		this.addMsgsBtn('links',			'Sends Links Message In Chat',		'Links',		this.proxy.menu.linksClick);
+		this.addMsgsBtn('fans',				'Sends No Fans Message In Chat',	'No Fans',		this.proxy.menu.fansClick);
+		this.addMsgsBtn('skip',				'Sends No Skip Message In Chat',	'No Skip',		this.proxy.menu.skipsClick);
+		this.addMsgsBtn('waffles',			'Sends Waffles Message In Chat',	'Waffles',		this.proxy.menu.wafflesClick);
+		this.addStatBtn('sleep',			'Sets Status to Sleeping',		'Sleeping',		this.proxy.menu.sleepClick);
+		this.addStatBtn('work',				'Sets Status to Working',		'Working',		this.proxy.menu.workClick);
+		this.addStatBtn('afk',				'sets Status to AFK',			'AFK',			this.proxy.menu.AFKClick);
+		this.addStatBtn('back',				'sets Status to Available',		'Available',		this.proxy.menu.backClick);
+		this.addStatBtn('idle',				'sets Status to Idle',			'Idle',			this.proxy.menu.idleClick);
+		this.addModsBtn('skip',				'Skips Current DJ',			'Skip',			this.proxy.menu.skipClick);
+		this.addModsBtn('lock',				'Locks Booth',				'Lock',			this.proxy.menu.lockClick);
+		this.addModsBtn('unlock',			'Unlocks Booth',			'Unlock',		this.proxy.menu.unlockClick);
+		this.addModsBtn('lockskip',			'Skips DJ and Adds Back to Booth',	'Lockskip',		this.proxy.menu.lockskipClick);
 	},
 	//creates the settings buttons on the right
 	addSettBtn: function(setting, id, titling, text, callback) {
