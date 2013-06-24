@@ -1,3 +1,19 @@
+var clickTimer = 	null;
+var clicked = 		false;
+var clickPassed =	0;
+var clickToWait =	5000;
+var skipTimer =		null;
+var skipped =		false;
+var skipPassed =	0;
+var skipToWait =	2000;
+var mentionTimer =	null;
+var mentioned =		false;
+var mentionPassed =	0;
+var mentionToWait =	120000;
+var boothWaitTimer =	null;
+var boothWaiting =	false;
+var boothWaitPassed =	0;
+
 var rulesMsg = "/me Rules: 1) No spamming 2) No posting lewd content (pictures/videos/doujins) ect. 3) No songs over 7 minutes unless under certain conditions (A featured artist playing a mix.) 4) Please speak English. Have fun!";
 var fbMsg = ["/me Check out the promoters on their youtube channels! HDmusicNexus: http://www.youtube.com/HDmusicNexus HDdubRAVE3: http://www.youtube.com/HDdubRave3 HDMusicGirl:http://www.youtube.com/TheHDMusicGirl"];
 var enMsg = ["English only in chat please!", "Please could you talk in English."];
@@ -68,8 +84,8 @@ var scripts = [
             '$("#side-right").hoverIntent(function() {var timeout_r = $(this).data("timeout_r");if (timeout_r) {clearTimeout(timeout_r);}$(this).animate({"right": "0px"}, 500, "easeOutCirc");}, function() {$(this).data("timeout_r", setTimeout($.proxy(function() {$(this).animate({"right": "-190px"}, 500, "easeOutCirc");}, this), 500));});',
 ];
 
-EDMbassyModel = class.extend({
-  init: function() {
+EDMbassyModel = Class.extend({
+	init: function() {
 		this.proxy = {
 			menu: {
 				autowootClick:	$proxy(this.autowootClick,	this),
@@ -94,17 +110,17 @@ EDMbassyModel = class.extend({
 				lockskipClick:	$proxy(this.lockskipClick,	this),
 				leftClick:	$proxy(this.leftClick,		this),
 			},
-		djAdvanced:		$proxy(this.djAdvanced,		this),
-  		autoRespond:		$proxy(this.autoRespond,	this),
-  		queueUpdate:		$proxy(this.queueUpdate,	this),
-  		roomSkip:		$proxy(this.roomSkip,		this),
-  		populateUserlist:	$proxy(this.populateUserlist,	this),
-		strobeListener:		$proxy(this.strobeListener,	this),
+			djAdvanced:		$proxy(this.djAdvanced,		this),
+	  		autoRespond:		$proxy(this.autoRespond,	this),
+	  		queueUpdate:		$proxy(this.queueUpdate,	this),
+	  		roomSkip:		$proxy(this.roomSkip,		this),
+	  		populateUserlist:	$proxy(this.populateUserlist,	this),
+			strobeListener:		$proxy(this.strobeListener,	this),
+		},
 		this.loadSettings();
 		this.initAPI();
 		this.initUI();
 	},
-	this.loadSettings();
 	settings: {
 		autowoot:	false,
 		autoqueue: 	false,
@@ -112,31 +128,6 @@ EDMbassyModel = class.extend({
 		emotes:		true,
 		audience:	true,
 		left:		false,
-	},
-	Timers: {
-		cTimer: {
-			clickTimer:	null,
-			clicked: 	false,
-			clickPassed:	0;
-			clickToWait:	5000;
-			},
-		sTimer: {
-			skipTimer:	null,
-			skipped:	false,
-			skipPassed:	0,
-			skipToWait:	2000,
-		},
-		mTimer: {
-			mentionTimer:	null,
-			mentioned:	false,
-			mentionPassed:	0,
-			mentionToWait:	120000,
-		},
-		bTimer: {
-			boothWaitTimer:	null,
-			boothWaiting:	false,
-			boothWaitPassed:0,
-		}
 	},	
 	loadSettings: functnion() {
 		if (localStorage.EDMbassy == undefined) {
@@ -184,24 +175,24 @@ EDMbassyModel = class.extend({
 		this.addModsBtn('unlock',			'Unlocks Booth',			'Unlock'		this.proxy.menu.unlockClick);
 		this.addModsBtn('lockskip',			'Skips DJ and Adds Back to Booth',	'Lockskip'		this.proxy.menu.lockskipClick);
 	},
-	addSettBtn: function(setting, id, titles, text, callback) {
-		$('#side-right .sidebar-content').append('<a id="EDMbassy-btn-' + id + '"><div title="' + titles + '" style="color:' + (setting ? '#3FFF00' : '#ED1C24') + '"></div>' + text + '</a>');
+	addSettBtn: function(setting, id, titling, text, callback) {
+		$('#side-right .sidebar-content').append('<a id="EDMbassy-btn-' + id + '"><div title="' + titling + '" style="color:' + (setting ? '#3FFF00' : '#ED1C24') + '"></div>' + text + '</a>');
 		$('#EDMbassy-btn-' + id).click(callback);
 	},
-	addMsgsBtn: function(id, titles, text, callback) {
-		$('#side-right .sidebar-content').append('<a id="EDMbassy-btn-' + id + '"><div title="' + titles + '" style="color:#FF8C00"></div>' + text + '</a>');
+	addMsgsBtn: function(id, titling, text, callback) {
+		$('#side-right .sidebar-content').append('<a id="EDMbassy-btn-' + id + '"><div title="' + titling + '" style="color:#FF8C00"></div>' + text + '</a>');
 		$('#EDMbassy-btn-' + id).click(callback);
 	},
-	addStatBtn: function(id, titles, text, callback) {
-		$('#side-right .sidebar-content').append('<a id="EDMbassy-btn-' + id + '"><div title="' + titles + '" style="color:#FF8FEE"></div>' + text + '</a>');
+	addStatBtn: function(id, titling, text, callback) {
+		$('#side-right .sidebar-content').append('<a id="EDMbassy-btn-' + id + '"><div title="' + titling + '" style="color:#FF8FEE"></div>' + text + '</a>');
 		$('#EDMbassy-btn-' + id).click(callback);
-	addModsBtn: function(id, titles, text, callback) {
-		$('#side-right .sidebar-content').append('<a id="EDMbassy-btn-' + id + '"><div title="' + titles + '" style="color:#E90E82"></div>' + text + '</a>');
+	addModsBtn: function(id, titling, text, callback) {
+		$('#side-right .sidebar-content').append('<a id="EDMbassy-btn-' + id + '"><div title="' + titling + '" style="color:#E90E82"></div>' + text + '</a>');
 		$('#EDMbassy-btn-' + id).click(callback);
 	},
 	changeSettBtnColor: function(id, value);
 		$('#plugcubed-btn-' + id).find('[style^="color:"], [style*=" color:"]').attr('style','color:' + (value === true ? '#3FFF00' : '#ED1C24'));
-	}
+	},
 	autowootClick: function() {
 		this.settings.autowoot = !this.settings.autowoot;
 		this.changeSettBtnColor('woot', this.settings.autowoot);
@@ -258,7 +249,7 @@ EDMbassyModel = class.extend({
 	},
 	leftClick: function() {
 		this.settings.left = !this.settings.left;
-		$(".sidebar#side-left").animate({"left": this.settings.left ? "0px" : "-190px"}, 300, "easeOutCirc");
+		$(".sidebar #side-left").animate({"left": this.settings.left ? "0px" : "-190px"}, 300, "easeOutCirc");
 		this.saveSettings();
 	},
 	rulesClick: function() {
@@ -305,7 +296,7 @@ EDMbassyModel = class.extend({
 				Models.user.changeStatus(3);
 			}
 		}
-	}
+	},
 	workClick: function() {
 		if (clicked == false) {
 			clicked = true;
@@ -358,7 +349,7 @@ EDMbassyModel = class.extend({
 	},
 	unlockClick: function() {
 		new RoomPropsService(document.location.href.split('/')[3],false,true,1,5);
-	}
+	},
 	lockskipClick: function() {
 		if (skipped == false) {
 			skipped = true;
@@ -531,43 +522,43 @@ EDMbassyModel = class.extend({
 		}
 	},
 	checkClicked: function() {
-		if (this.Timers.cTimer.clickPassed >= clickToWait) {
-			clearInterval(this.Timers.cTimer.clickTimer);
-			this.Timers.cTimer.clicked = false;
-			this.Timers.cTimer.clickPassed = 0;
+		if (clickPassed >= clickToWait) {
+			clearInterval(clickTimer);
+			clicked = false;
+			clickPassed = 0;
 		}
 		else {
-			this.Timers.cTimer.clickPassed this.Timers.cTimer.clickPassed + 1000;
+			clickPassed clickPassed + 1000;
 		}
 	},
 	checkSkipped: function() {
-		if (this.Timers.sTimer.skipPassed >= this.Timers.sTimer.skipToWait) {
-			clearInterval(this.Timers.sTimer.skipTimer);
-			this.Timers.sTimer.skipped = false;
-			this.Timers.sTimer.skipPassed = 0;
+		if (skipPassed >= skipToWait) {
+			clearInterval(skipTimer);
+			skipped = false;
+			skipPassed = 0;
 		}
 		else {
-			this.Timers.sTimer.skipPassed = this.Timers.sTimer.skipPassed + 500;
+			skipPassed = skipPassed + 500;
 		}
 	},
 	checkMentioned: function() {
-		if (this.Timers.mTimer.mentionPassed >= this.Timers.mTimer.mentionToWait) {
-			clearInterval(this.Timers.mTimer.mentionTimer);
-			this.Timers.mTimer.mentioned = false;
-			this.Timers.mTimer.mentionPassed = 0;
+		if (mentionPassed >= mentionToWait) {
+			clearInterval(mentionTimer);
+			mentioned = false;
+			mentionPassed = 0;
 		}
 		else {
-			this.Timers.mTimer.mentionPassed = this.Timers.mTimer.mentionPassed + 1000;
+			mentionPassed = mentionPassed + 1000;
 		}
 	},
 	checkBoothWait: function() {
-		if (this.Timers.bTimer.boothWaitPassed >= API.getMedia().duration) {
-			clearInterval(this.Timers.bTimer.boothWaitTimer)
-			this.Timers.bTimer.boothWaiting = false;
-			this.Timers.bTimer.boothWaitPassed = 0;
+		if (boothWaitPassed >= API.getMedia().duration) {
+			clearInterval(boothWaitTimer)
+			boothWaiting = false;
+			boothWaitPassed = 0;
 		}
 		else {
-			 this.Timers.bTimer.boothWaitPassed = this.Timers.bTimer.boothWaitPassed + 1000;
+			 boothWaitPassed = boothWaitPassed + 1000;
 		}
 	},
 });
