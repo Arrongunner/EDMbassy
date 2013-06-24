@@ -130,9 +130,7 @@ EDMbassyModel = Class.extend({
 		left:		false,
 	},	
 	loadSettings: functnion() {
-		if (localStorage.EDMbassy == undefined) {
-			return;
-		}
+		if (localStorage.EDMbassy === undefined) return;
 		var save = JSON.parse(localStorage.EDMbassy);
 		for i in this.settings) {
 			if (save[i] !== undefined) {
