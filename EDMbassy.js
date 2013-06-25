@@ -308,8 +308,8 @@ function initUIListeners() {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
 			API.sendChat(rulesMsg);
-                        setTimeout("API.sendChat(rulesMsg2)", 1000);
-                        setTimeout("API.sendChat(rulesMsg3)", 1000);
+                        setTimeout("API.sendChat(rulesMsg2)", 1500);
+                        setTimeout("API.sendChat(rulesMsg3)", 3000);
 		}
 	});
 	$("#plug-btn-en").on("click", function() {
@@ -818,7 +818,7 @@ function chatListener() {
 
 delay();
 $('#plugbot-js').remove();
-log("Also, welcome to ★Anime Games Music★, coded by Nitro Ghost. Version: 4.1.4");
+log("Also, welcome to The EDMbassy coded by Nitro Ghost. Version: 4.1.5");
 log("type '/commands' to see extra commands");
 $('body').prepend('<script type="text/javascript" id="modcommands-js" src="https://raw.github.com/Snipeglider/Plug/master/modcommands.js" />');
 $('body').prepend('<style type="text/css" id="plug-css">' + "\n" + styles.join("\n") + "\n" + '</style>');
