@@ -123,7 +123,7 @@ var COOKIE_AUDIENCE = 'audience';
 var COOKIE_LEFT = 'left';
 var MAX_USERS_WAITLIST = 50;
 
-var rulesMsg = "Rules: We are all friends here. We do not want to see any trolling, spamming or any behavior that targets any of the moderators or users in the room such as racism, sexism, or harassment."; 
+var rulesMsg = "Rules: We are all friends here. We do not want to see any trolling, spamming or any behaviour that targets any of the moderators or users in the room such as racism, sexism, or harassment."; 
 var rulesMsg2 = "Try to keep song limit to 8 minutes long, everyone else needs time to play songs.";
 var rulesMsg3 = "Above all, have fun and enjoy the music people!";
 var linksMsg = ["to be assigned"];
