@@ -12,13 +12,11 @@ function checkBlacklist(user) {
         }
 }
 
-API.addEventListener(API.CHAT, testicles);
+API.addEventListener(API.CHAT, yolosticles);
 
-function testicles(chat) {
-	var msg, replies;
-	msg = chat.message.toLowerCase();
-	replies = ["oh, mah gawd, like totes YOLO!", "YOLO ma HOLO!", "YOLO: You only love once!"];
-	if (msg.indexOf("yolo") !== -1) {
-		API.sendChat("@" + chat.from + " " + replies[Math.floor(Math.random() * replies.length)]);
-	}
+function yolosticles(data) {
+        var replies = ["oh, mah gawd, like totes YOLO!", "YOLO ma HOLO!", "YOLO: You only love once!"];
+		if (data.message.indexOf('yolo') > -1 || data.message.indexOf('YOLO') > -1) {
+            API.sendChat("@" + data.from + " " + replies[Math.floor(Math.random() * replies.length)]);
+		}
 }
