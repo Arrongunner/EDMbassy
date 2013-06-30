@@ -12,11 +12,29 @@ function checkBlacklist(user) {
         }
 }
 
-API.addEventListener(API.CHAT, yolosticles);
+var ohmahgawded = false;
+var ohmahgawdedWait = 300000;
+var ohmahgawdedPassed = 0;
+var ohmahgawdedTimer = null;
 
-function yolosticles(data) {
-        var yMsg = ["oh, mah gawd, like totes YOLO!", "YOLO ma HOLO!", "YOLO: You only love once!"];
-	if (data.message.indexOf('yolo') > -1) {
-        	API.sendChat("@" + data.from + " " + yMsg[Math.floor(Math.random() * yMsg.length)]);
+API.addEventListener(API.CHAT, omgsticles);
+
+function omgsticles(data) {
+        var yMsg = ["OH... MAH GAWD!", "OH EM GEEEEE!"];
+	if (ohmahgawded == false && data.message.indexOf('omg') > -1) {
+		ohmahgawded = true;
+		ohmahgawdedTimer = setInterval("checkOhmahgawded();", 1000);
+        	setInterval("API.sendChat(yMsg[Math.floor(Math.random() * yMsg.length)]);", 2000);
+	}
+}
+
+function checkOhmahgawded() {
+	if (ohmahgawdedPassed >= ohmahgawdedWait) {
+		clearInterval(ohmahgawdedTimer);
+		ohmahgawded = false;
+		ohmahgawdedPassed = 0;
+	}
+	else {
+		ohmahgawdedPassed = ohmahgawdedPassed + 1000;
 	}
 }
