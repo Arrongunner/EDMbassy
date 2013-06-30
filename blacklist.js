@@ -20,11 +20,11 @@ var ohmahgawdedTimer = null;
 API.addEventListener(API.CHAT, omgsticles);
 
 function omgsticles(data) {
-        var yMsg = ["OH... MAH GAWD!", "OH EM GEEEEE!"];
-	if (ohmahgawded == false && data.message.indexOf('omg') > -1) {
+        if (ohmahgawded == false && data.message.indexOf('omg') > -1) {
+        	var yMsg = ["OH... MAH GAWD!", "OH EM GEEEEE!"];
 		ohmahgawded = true;
 		ohmahgawdedTimer = setInterval("checkOhmahgawded();", 1000);
-        	setInterval("API.sendChat(yMsg[Math.floor(Math.random() * yMsg.length)]);", 2000);
+        	API.sendChat(yMsg[Math.floor(Math.random() * yMsg.length)]);
 	}
 }
 
