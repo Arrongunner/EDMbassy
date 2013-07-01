@@ -2,10 +2,6 @@ var ohmahgawded = false;
 var ohmahgawdedWait = 600000;
 var ohmahgawdedPassed = 0;
 var ohmahgawdedTimer = null;
-var wtfed = false;
-var wtfedWait = 600000;
-var wtfedPassed = 0;
-var wtfTimer = null;
 var omgMsg = [
 	" #1: OH... MAH GAWD!", 
 	" #2: Merciful Heavens!", 
@@ -64,11 +60,6 @@ function omgsticles(data) {
 		ohmahgawdedTimer = setInterval("checkOhmahgawded();", 1000);
         	API.sendChat("OMG alternative" + omgMsg[Math.floor(Math.random() * omgMsg.length)]);
 	}
-	if (wtfed == false && data.message.indexOf('wtf') > -1 || data.message.indexOf('WTF') > -1) {
-		wtfed = true;
-		wtfTimer = setInterval("checkWtfed();", 1000);
-		API.sendChat("@" + data.from + " why yew telling people you're Willing To Fuck O_O");
-	} 
 }
 
 function checkOhmahgawded() {
@@ -79,16 +70,5 @@ function checkOhmahgawded() {
 	}
 	else {
 		ohmahgawdedPassed = ohmahgawdedPassed + 1000;
-	}
-}
-
-function checkWtfed() {
-	if (wtfedPassed >= wtfedWait) {
-		clearInterval(wtfTimer);
-		wtfed = false;
-		wtfedPassed = 0;
-	}
-	else {
-		wtfedPassed = wtfedPassed + 1000;
 	}
 }
