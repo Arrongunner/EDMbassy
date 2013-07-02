@@ -113,9 +113,9 @@ function checkStats() {
 	if (gamesLost == 3) {
 		API.sendChat("@" + API.getUser(player).username + " Shit son, you have balls! But this time it has not paid off for you. Thanks for playing, GOODBYE!!!");
 		playingTimer = setInterval("checkPlaying()", 1000);
-		setTimeout('API.moderateKickUser(player, "Ouch unlucky. Great game though. See you in an hour (^_^)");', 6000);
+		setTimeout('API.moderateKickUser(player, "Ouch unlucky. Great game though. See you in an hour (^_^)");', 3000);
         	userChoice = [];
-        	player = " ";
+        	setTimeout('player = " ";', 7000);
         	chosen = true;
         	gamesWon = 0;
         	gamesLost = 0;	
