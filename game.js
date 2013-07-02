@@ -1,4 +1,4 @@
-API.addEventListener(API.CHAT, gamesticles);
+//API.addEventListener(API.CHAT, gamesticles);
 
 var userChoice = [];
 var player = " ";
