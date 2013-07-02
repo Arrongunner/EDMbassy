@@ -19,7 +19,7 @@ function gamesticles(data) {
         	player.push(data.fromID);
         }
         if (playing == true && player.indexOf(data.fromID) > -1 && msg.indexOf("/quit") > -1) {
-        	API.sendChat("@" + data.from + " N'awwooo you quitter!!! you could have won. Final score: WON: " + gamesWon + " LOST: " gamesLost);
+        	API.sendChat("@" + data.from + " N'awwooo you quitter!!! you could have won. Final score: WON: " + gamesWon + " LOST: " + gamesLost);
         	playingTimer = setInterval("checkPlaying()", 1000);
         	userChoice = [];
         	player = [];
@@ -94,27 +94,30 @@ function game(){
 	userChoice = [];
 	chosen = false;
 	API.sendChat("@" + API.getUser(player).username + " Stats: WON: " + gamesWon + " LOST: " + gamesLost + ". Rock Paper or Scissors?");
+	checkStats();
 }
 
-if (gamesWon == 3) {
-	API.sendChat("@" + API.getUser(player).username + " Congratulations, you just beat Rock Paper Scissors Kick! As promised, here is your winning cookie!! :cookie:");
-	playingTimer = setInterval("checkPlaying()", 1000);
-        userChoice = [];
-        player = [];
-        chosen = true;
-        gamesWon = 0;
-        gamesLost = 0;
-}
-
-if (gamesLost == 3) {
-	API.sendChat("@" + API.getUser(player).username + " Shit son, you have balls! But this time it has not paid off for you. Thanks for playing, GOODBYE!!!");
-	playingTimer = setInterval("checkPlaying()", 1000);
-	setTimeout('API.moderateKickUser(player, "Ouch unlucky. Great game though. See you in an hour (^_^)");', 6000);
-        userChoice = [];
-        player = [];
-        chosen = true;
-        gamesWon = 0;
-        gamesLost = 0;	
+function checkStats() {
+	if (gamesWon == 3) {
+		API.sendChat("@" + API.getUser(player).username + " Congratulations, you just beat Rock Paper Scissors Kick! As promised, here is your winning cookie!! :cookie:");
+		playingTimer = setInterval("checkPlaying()", 1000);
+        	userChoice = [];
+        	player = [];
+        	chosen = true;
+        	gamesWon = 0;
+        	gamesLost = 0;
+	}
+	if (gamesLost == 3) {
+		API.sendChat("@" + API.getUser(player).username + " Shit son, you have balls! But this time it has not paid off for you. Thanks for playing, GOODBYE!!!");
+		playingTimer = setInterval("checkPlaying()", 1000);
+		setTimeout('API.moderateKickUser(player, "Ouch unlucky. Great game though. See you in an hour (^_^)");', 6000);
+        	userChoice = [];
+        	player = [];
+        	chosen = true;
+        	gamesWon = 0;
+        	gamesLost = 0;	
+	}
+	
 }
 
 function checkPlaying() {
