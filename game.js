@@ -1,7 +1,7 @@
 API.addEventListener(API.CHAT, gamesticles);
 
 var userChoice = [];
-var player = [];
+var player = "";
 var playing = false;
 var playingWait = 60000;
 var playingPassed = 0;
@@ -14,6 +14,7 @@ function gamesticles(data) {
 	var msg = data.message.toLowerCase();
         if (playing == false && msg.indexOf("/play") > -1) {
                 API.sendChat("@" + data.from + " welcome to Rock Paper Scissors Kick. Win 3 games and get a Cookie, lose 3 games, get kicked from the room. You can quit at anytime by typing /quit.");
+                API.sendChat("@" + data.from + " Rock Paper or Scissors?");
                 playing = true;
         	chosen = false;
         	player.push(data.fromID);
@@ -93,7 +94,9 @@ function game(){
 	API.sendChat("@" + API.getUser(player).username + " you chose " + userChoice + " and I chose " + computerChoice + ". " + compare(userChoice, computerChoice));
 	userChoice = [];
 	chosen = false;
-	API.sendChat("@" + API.getUser(player).username + " Stats: WON: " + gamesWon + " LOST: " + gamesLost + ". Rock Paper or Scissors?");
+	if (gamesWon < 3 && gamesLost < 3) {
+		API.sendChat("@" + API.getUser(player).username + " Stats: WON: " + gamesWon + " LOST: " + gamesLost + ". Rock Paper or Scissors?");
+	}
 	checkStats();
 }
 
