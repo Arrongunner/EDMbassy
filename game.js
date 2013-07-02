@@ -1,31 +1,37 @@
 API.addEventListener(API.CHAT, gamesticles);
 
+var userChoice = " ";
+var player = " ";
 var playing = false;
-var chosen = false;
 var playingWait = 600000;
 var playingPassed = 0;
 var playingTimer = null;
-var userChoice = " ";
+var chosen = true;
+
 
 function gamesticles(data) {
-        if (playing = false && data.message.indexOf("/play") > -1) {
-        	playing = true;
-        	playingTimer = setInterval("checkPlaying();", 1000);
+        if (playing == false && data.message.indexOf("/play") > -1) {
                 API.sendChat("@" + data.from + " welcome to Rock Paper Scissors. which do you choose?");
+                playing = true;
+        	chosen = false;
+        	player = data.fromID;
         }
-        if (chosen = false && playing = true && data.message.indexOf("rock") > -1) {
+        if (chosen == false && API.getUser(player) && data.message.indexOf("rock") > -1) {
+        	userChoice = "ROCK";
         	chosen = true;
-        	userChoice = "rock";
+        	player = " ";
         	game();
         }
-        else if (chosen = false && playing = true && API.getUser(player) && data.message.indexOf("paper") > -1) {
+        else if (chosen == false && API.getUser(player) && data.message.indexOf("paper") > -1) {
+        	userChoice = "PAPER";
         	chosen = true;
-        	userChoice = "paper";
+        	player = " ";
         	game();
         }
-        else if (chosen = false && playing = true && API.getUser(player) && data.message.indexOf("scissors") > -1) {
+        else if (chosen == false && API.getUser(player) && data.message.indexOf("scissors") > -1) {
+        	userChoice = "SCISSORS";
         	chosen = true;
-        	userChoice = "scissors";
+        	player = " ";
         	game();
         }
 }
@@ -33,53 +39,50 @@ function gamesticles(data) {
 function game(){
 	var computerChoice = Math.random();
 	if (computerChoice < 0.34) {
-		computerChoice = "rock";
+		computerChoice = "ROCK";
 	} 
 	else if(computerChoice <= 0.67) {
-		computerChoice = "paper";
+		computerChoice = "PAPER";
 	} 
 	else {
-		computerChoice = "scissors";
+		computerChoice = "SCISSORS";
 	}
 	var compare = function(choice1, choice2) {
 		if (choice1 == choice2) {
 	        	return "The result is a tie!";
 	    	}
-	    	if (choice1 == "rock") {
-	        	if (choice2 == "scissors") {
-	            		return "rock wins";
+	    	if (choice1 == "ROCK") {
+	        	if (choice2 == "SCISSORS") {
+	            		return "ROCK wins";
 	        	}
 	        	else {
-	            		return "paper wins";
+	            		return "PAPER wins";
 	        	}
 	    	}
-	    	if (choice1 == "paper") {
-	        	if (choice2 == "rock") {
-	            		return "paper wins";
+	    	if (choice1 == "PAPER") {
+	        	if (choice2 == "ROCK") {
+	            		return "PAPER wins";
 	        	}
 	        	else {
-	            		return "scissors wins";
+	            		return "SCISSORS wins";
 	        	}
 	    	}
-	    	if (choice1 == "scissors") {
-	        	if (choice2 == "paper") {
-	            		return "scissors wins";
+	    	if (choice1 == "SCISSORS") {
+	        	if (choice2 == "PAPER") {
+	            		return "SCISSORS wins";
 	        	}
 	        	else {
-	            		return "rock wins";
+	            		return "ROCK wins";
 	        	}
 	    	}
 	};
-	API.sendChat("you chose " + userChoice);
-	API.sendChat("computer chose " + computerChoice);
-	API.sendChat(compare(userChoice, computerChoice));
-};
+	API.sendChat("you chose " + userChoice + " and I chose " + computerChoice + ". " + compare(userChoice, computerChoice));
+}
 
 function checkPlaying() {
 	if (playingPassed >= playingWait) {
 		clearInterval(playingTimer);
 		playing = false;
-		chosen = false;
 		playingPassed = 0;
 	}
 	else {
