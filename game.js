@@ -49,30 +49,30 @@ function game(){
 	}
 	var compare = function(choice1, choice2) {
 		if (choice1 == choice2) {
-	        	return "The result is a tie!";
+	        	return "The result is a tie! We are both losers :'(";
 	    	}
 	    	if (choice1 == "ROCK") {
 	        	if (choice2 == "SCISSORS") {
-	            		return "ROCK wins";
+	            		return "ROCK beats SCISSORS which means you win! You won't be so lucky next time!";
 	        	}
 	        	else {
-	            		return "PAPER wins";
+	            		return "PAPER beats ROCK which means I'm the champion! in yo' FACE!";
 	        	}
 	    	}
 	    	if (choice1 == "PAPER") {
 	        	if (choice2 == "ROCK") {
-	            		return "PAPER wins";
+	            		return "PAPER beats ROCK which means I've lost! how... how can this be? :(";
 	        	}
 	        	else {
-	            		return "SCISSORS wins";
+	            		return "SCISSORS beats PAPER which means I win Bitches!! L-O-S-E-R spells LOSER!! ner ner n-ner neeeer!";
 	        	}
 	    	}
 	    	if (choice1 == "SCISSORS") {
 	        	if (choice2 == "PAPER") {
-	            		return "SCISSORS wins";
+	            		return "SCISSORS beats PAPER which means DAMMIT I lost :( good game dude, good game!";
 	        	}
 	        	else {
-	            		return "ROCK wins";
+	            		return "ROCK beats SCISSORS which means you have lost to my all mighty POWA!! HA! go and cry SUCKA!";
 	        	}
 	    	}
 	};
