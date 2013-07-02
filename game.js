@@ -12,6 +12,7 @@ var chosen = true;
 function gamesticles(data) {
         if (playing == false && data.message.indexOf("/play") > -1) {
                 API.sendChat("@" + data.from + " welcome to Rock Paper Scissors. which do you choose?");
+                playingTimer = setInterval("checkPlaying", 1000);
                 playing = true;
         	chosen = false;
         	player = data.fromID;
