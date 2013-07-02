@@ -18,17 +18,17 @@ function gamesticles(data) {
         	chosen = false;
         	player.push(data.fromID);
         }
-        if (chosen == false && player.indexOf(data.fromID) > -1 && msg.substr(0, 10).indexOf("rock") > -1) {
+        if (chosen == false && player.indexOf(data.fromID) > -1 && msg.substr(0, 5).indexOf("rock") > -1) {
         	userChoice.push("ROCK");
         	chosen = true;
         	game();
         }
-        else if (chosen == false && player.indexOf(data.fromID) > -1 && mmsg.substr(0, 10).indexOf("paper") > -1) {
+        else if (chosen == false && player.indexOf(data.fromID) > -1 && mmsg.substr(0, 5).indexOf("paper") > -1) {
         	userChoice.push("PAPER");
         	chosen = true;
         	game();
         }
-        else if (chosen == false && player.indexOf(data.fromID) > -1 && msg.substr(0, 10).indexOf("scissors") > -1) {
+        else if (chosen == false && player.indexOf(data.fromID) > -1 && msg.substr(0, 8).indexOf("scissors") > -1) {
         	userChoice.push("SCISSORS");
         	chosen = true;
         	game();
