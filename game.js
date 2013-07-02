@@ -1,7 +1,7 @@
 API.addEventListener(API.CHAT, gamesticles);
 
 var userChoice = [];
-var player = "";
+var player = " ";
 var playing = false;
 var playingWait = 60000;
 var playingPassed = 0;
@@ -17,13 +17,13 @@ function gamesticles(data) {
                 API.sendChat("@" + data.from + " Rock Paper or Scissors?");
                 playing = true;
         	chosen = false;
-        	player.push(data.fromID);
+        	player = (data.fromID);
         }
         if (playing == true && player.indexOf(data.fromID) > -1 && msg.indexOf("/quit") > -1) {
         	API.sendChat("@" + data.from + " N'awwooo you quitter!!! you could have won. Final score: WON: " + gamesWon + " LOST: " + gamesLost);
         	playingTimer = setInterval("checkPlaying()", 1000);
         	userChoice = [];
-        	player = [];
+        	player = " ";
         	chosen = true;
         	gamesWon = 0;
         	gamesLost = 0;
@@ -105,7 +105,7 @@ function checkStats() {
 		API.sendChat("@" + API.getUser(player).username + " Congratulations, you just beat Rock Paper Scissors Kick! As promised, here is your winning cookie!! :cookie:");
 		playingTimer = setInterval("checkPlaying()", 1000);
         	userChoice = [];
-        	player = [];
+        	player = " ";
         	chosen = true;
         	gamesWon = 0;
         	gamesLost = 0;
@@ -115,7 +115,7 @@ function checkStats() {
 		playingTimer = setInterval("checkPlaying()", 1000);
 		setTimeout('API.moderateKickUser(player, "Ouch unlucky. Great game though. See you in an hour (^_^)");', 6000);
         	userChoice = [];
-        	player = [];
+        	player = " ";
         	chosen = true;
         	gamesWon = 0;
         	gamesLost = 0;	
