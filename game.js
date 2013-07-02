@@ -1,5 +1,36 @@
+API.addEventListener(API.CHAT, gamesticles);
+
+var playing = false;
+var chosen = false;
+var playingWait = 600000;
+var playingPassed = 0;
+var playingTimer = null;
+var userChoice = " ";
+
+function gamesticles(data) {
+        if (playing = false && data.message.indexOf("/play") > -1) {
+        	playing = true;
+        	playingTimer = setInterval("checkPlaying();", 1000);
+                API.sendChat("@" + data.from + " welcome to Rock Paper Scissors. which do you choose?");
+        }
+        if (chosen = false && playing = true && data.message.indexOf("rock") > -1) {
+        	chosen = true;
+        	userChoice = "rock";
+        	game();
+        }
+        else if (chosen = false && playing = true && API.getUser(player) && data.message.indexOf("paper") > -1) {
+        	chosen = true;
+        	userChoice = "paper";
+        	game();
+        }
+        else if (chosen = false && playing = true && API.getUser(player) && data.message.indexOf("scissors") > -1) {
+        	chosen = true;
+        	userChoice = "scissors";
+        	game();
+        }
+}
+
 function game(){
-	var userChoice = prompt("Do you choose rock, paper or scissors?");
 	var computerChoice = Math.random();
 	if (computerChoice < 0.34) {
 		computerChoice = "rock";
@@ -39,7 +70,19 @@ function game(){
 	        	}
 	    	}
 	};
-	log("you chose " + userChoice);
-	log("computer chose " + computerChoice);
-	log(compare(userChoice, computerChoice));
+	API.sendChat("you chose " + userChoice);
+	API.sendChat("computer chose " + computerChoice);
+	API.sendChat(compare(userChoice, computerChoice));
 };
+
+function checkPlaying() {
+	if (playingPassed >= playingWait) {
+		clearInterval(playingTimer);
+		playing = false;
+		chosen = false;
+		playingPassed = 0;
+	}
+	else {
+		playingPassed = playingPassed + 1000;
+	}
+}
