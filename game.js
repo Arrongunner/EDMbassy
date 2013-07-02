@@ -10,24 +10,25 @@ var chosen = true;
 
 
 function gamesticles(data) {
-        if (playing == false && data.message.indexOf("/play") > -1) {
+	var msg = data.message.toLowerCase();
+        if (playing == false && msg.indexOf("/play") > -1) {
                 API.sendChat("@" + data.from + " welcome to Rock Paper Scissors. which do you choose?");
                 playingTimer = setInterval("checkPlaying()", 1000);
                 playing = true;
         	chosen = false;
         	player.push(data.fromID);
         }
-        if (chosen == false && player.indexOf(data.fromID) > -1 && data.message.indexOf("rock") > -1) {
+        if (chosen == false && player.indexOf(data.fromID) > -1 && msg.indexOf("rock") > -1) {
         	userChoice.push("ROCK");
         	chosen = true;
         	game();
         }
-        else if (chosen == false && player.indexOf(data.fromID) > -1 && data.message.indexOf("paper") > -1) {
+        else if (chosen == false && player.indexOf(data.fromID) > -1 && msg.indexOf("paper") > -1) {
         	userChoice.push("PAPER");
         	chosen = true;
         	game();
         }
-        else if (chosen == false && player.indexOf(data.fromID) > -1 && data.message.indexOf("scissors") > -1) {
+        else if (chosen == false && player.indexOf(data.fromID) > -1 && msg.indexOf("scissors") > -1) {
         	userChoice.push("SCISSORS");
         	chosen = true;
         	game();
