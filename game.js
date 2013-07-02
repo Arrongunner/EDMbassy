@@ -3,7 +3,7 @@ API.addEventListener(API.CHAT, gamesticles);
 var userChoice = [];
 var player = [];
 var playing = false;
-var playingWait = 60000;
+var playingWait = 600000;
 var playingPassed = 0;
 var playingTimer = null;
 var chosen = true;
