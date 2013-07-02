@@ -1,7 +1,7 @@
 API.addEventListener(API.CHAT, gamesticles);
 
-var userChoice = " ";
-var player = " ";
+var userChoice = [];
+var player = [];
 var playing = false;
 var playingWait = 60000;
 var playingPassed = 0;
@@ -15,24 +15,21 @@ function gamesticles(data) {
                 playingTimer = setInterval("checkPlaying()", 1000);
                 playing = true;
         	chosen = false;
-        	player = data.fromID;
+        	player.push(data.fromID);
         }
-        if (chosen == false && API.getUser(player) && data.message.indexOf("rock") > -1) {
-        	userChoice = "ROCK";
+        if (chosen == false && player.indexOf(data.fromID) > -1 && data.message.indexOf("rock") > -1) {
+        	userChoice.push("ROCK");
         	chosen = true;
-        	player = " ";
         	game();
         }
-        else if (chosen == false && API.getUser(player) && data.message.indexOf("paper") > -1) {
-        	userChoice = "PAPER";
+        else if (chosen == false && player.indexOf(data.fromID) > -1 && data.message.indexOf("paper") > -1) {
+        	userChoice.push("PAPER");
         	chosen = true;
-        	player = " ";
         	game();
         }
-        else if (chosen == false && API.getUser(player) && data.message.indexOf("scissors") > -1) {
-        	userChoice = "SCISSORS";
+        else if (chosen == false && player.indexOf(data.fromID) > -1 && data.message.indexOf("scissors") > -1) {
+        	userChoice.push("SCISSORS");
         	chosen = true;
-        	player = " ";
         	game();
         }
 }
@@ -77,7 +74,9 @@ function game(){
 	        	}
 	    	}
 	};
-	API.sendChat("you chose " + userChoice + " and I chose " + computerChoice + ". " + compare(userChoice, computerChoice));
+	API.sendChat("@" + API.getUser(player).username + " you chose " + userChoice + " and I chose " + computerChoice + ". " + compare(userChoice, computerChoice));
+	player = [];
+	userChoice = [];
 }
 
 function checkPlaying() {
