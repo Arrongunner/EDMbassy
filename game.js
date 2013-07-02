@@ -23,12 +23,12 @@ function gamesticles(data) {
         	chosen = true;
         	game();
         }
-        else if (chosen == false && player.indexOf(data.fromID) > -1 && mmsg.substr(0, 5).indexOf("paper") > -1) {
+        else if (chosen == false && player.indexOf(data.fromID) > -1 && msg.substr(0, 6).indexOf("paper") > -1) {
         	userChoice.push("PAPER");
         	chosen = true;
         	game();
         }
-        else if (chosen == false && player.indexOf(data.fromID) > -1 && msg.substr(0, 8).indexOf("scissors") > -1) {
+        else if (chosen == false && player.indexOf(data.fromID) > -1 && msg.substr(0, 9).indexOf("scissors") > -1) {
         	userChoice.push("SCISSORS");
         	chosen = true;
         	game();
