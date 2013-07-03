@@ -26,7 +26,7 @@ function gamesticles(data) {
         	player = (data.fromID);
         }
         if (playing == true && player.indexOf(data.fromID) > -1 && msg.indexOf("/quit") > -1) {
-        	API.sendChat("@" + data.from + " " + quitMsg + " Final Score: WON: " + gamesWon + " LOST: " + gamesLost);
+        	API.sendChat("@" + data.from + " " + quitMsg[Math.floor(Math.random() * quitMsg.length)] + " Final Score: WON: " + gamesWon + " LOST: " + gamesLost);
         	playingTimer = setInterval("checkPlaying()", 1000);
         	userChoice = [];
         	player = " ";
@@ -69,31 +69,31 @@ function game(){
 	    	if (choice1 == "ROCK") {
 	        	if (choice2 == "SCISSORS") {
 	        		gamesWon = gamesWon + 1;
-	            		return "ROCK beats SCISSORS " + winMsg;
+	            		return "ROCK beats SCISSORS " + winMsg[Math.floor(Math.random() * winMsg.length)];
 	        	}
 	        	else {
 	        		gamesLost = gamesLost + 1;
-	            		return "PAPER beats ROCK " + loseMsg;
+	            		return "PAPER beats ROCK " + loseMsgMsg[Math.floor(Math.random() * loseMsg.length)];
 	        	}
 	    	}
 	    	if (choice1 == "PAPER") {
 	        	if (choice2 == "ROCK") {
 	        		gamesWon = gamesWon + 1;
-	            		return "PAPER beats ROCK " + winMsg;
+	            		return "PAPER beats ROCK " + winMsg[Math.floor(Math.random() * winMsg.length)];
 	        	}
 	        	else {
 	        		gamesLost = gamesLost + 1;
-	            		return "SCISSORS beats PAPER " + loseMsg;
+	            		return "SCISSORS beats PAPER " + loseMsgMsg[Math.floor(Math.random() * loseMsg.length)];
 	        	}
 	    	}
 	    	if (choice1 == "SCISSORS") {
 	        	if (choice2 == "PAPER") {
 	        		gamesWon = gamesWon + 1;
-	            		return "SCISSORS beats PAPER " + winMsg;
+	            		return "SCISSORS beats PAPER " + winMsg[Math.floor(Math.random() * winMsg.length)];
 	        	}
 	        	else {
 	        		gamesLost = gamesLost + 1;
-	            		return "ROCK beats SCISSORS " + loseMsg;
+	            		return "ROCK beats SCISSORS " + loseMsgMsg[Math.floor(Math.random() * loseMsg.length)];
 	        	}
 	    	}
 	};
@@ -108,16 +108,16 @@ function checkStats() {
 		chosen = false;
 	}
 	if (gamesWon == 3 && gamesLost != 3) {
-		setTimeout('API.sendChat("@" + API.getUser(player).username + " Congratulations, " + cookieMsg);', 2000);
+		setTimeout('API.sendChat("@" + API.getUser(player).username + " Congratulations, " + cookieMsg[Math.floor(Math.random() * cookieMsg.length)]);', 2000);
 		playingTimer = setInterval("checkPlaying()", 1000);
-        userChoice = [];
-        player = " ";
-        chosen = true;
-        gamesWon = 0;
-        gamesLost = 0;
+        	userChoice = [];
+        	player = " ";
+        	chosen = true;
+        	gamesWon = 0;
+        	gamesLost = 0;
 	}
 	if (gamesWon != 3 && gamesLost == 3) {
-		setTimeout(API.sendChat("@" + API.getUser(player).username + " Shit son, " + kickMsg);, 2000);
+		setTimeout(API.sendChat("@" + API.getUser(player).username + " Shit son, " + kwinMsg[Math.floor(Math.random() * winMsg.length)]);, 2000);
 		playingTimer = setInterval("checkPlaying()", 1000);
 		setTimeout('new ModerationKickUserService(player, "Ouch unlucky. Great game though. See you in an hour");', 5000);
         	userChoice = [];
