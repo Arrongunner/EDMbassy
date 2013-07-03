@@ -117,7 +117,7 @@ function checkStats() {
         	gamesLost = 0;
 	}
 	if (gamesWon != 3 && gamesLost == 3) {
-		setTimeout(API.sendChat("@" + API.getUser(player).username + " Shit son, " + kwinMsg[Math.floor(Math.random() * winMsg.length)]);, 2000);
+		setTimeout('API.sendChat("@" + API.getUser(player).username + " Shit son, " + kwinMsg[Math.floor(Math.random() * winMsg.length)]);', 2000);
 		playingTimer = setInterval("checkPlaying()", 1000);
 		setTimeout('new ModerationKickUserService(player, "Ouch unlucky. Great game though. See you in an hour");', 5000);
         	userChoice = [];
