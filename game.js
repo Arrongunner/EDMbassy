@@ -83,7 +83,7 @@ function game(){
 	        	}
 	        	else {
 	        		gamesLost = gamesLost + 1;
-	            		return "SCISSORS beats PAPER " + loseMsgMsg;
+	            		return "SCISSORS beats PAPER " + loseMsg;
 	        	}
 	    	}
 	    	if (choice1 == "SCISSORS") {
@@ -93,7 +93,7 @@ function game(){
 	        	}
 	        	else {
 	        		gamesLost = gamesLost + 1;
-	            		return "ROCK beats SCISSORS " + loseMsgMsg;
+	            		return "ROCK beats SCISSORS " + loseMsg;
 	        	}
 	    	}
 	};
