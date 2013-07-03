@@ -73,7 +73,7 @@ function game(){
 	        	}
 	        	else {
 	        		gamesLost = gamesLost + 1;
-	            		return "PAPER beats ROCK " + loseMsgMsg;
+	            		return "PAPER beats ROCK " + loseMsg;
 	        	}
 	    	}
 	    	if (choice1 == "PAPER") {
