@@ -20,7 +20,7 @@ function gamesticles(data) {
 	var msg = data.message.toLowerCase();
         if (playing == false && msg.indexOf("/play") > -1) {
             API.sendChat("@" + data.from + " welcome to Rock Paper Scissors Kick. Win 3 games and get a Cookie, lose 3 games, get kicked from the room. You can quit at anytime by typing /quit.");
-            setTimeout(API.sendChat("@" + data.from + " Rock Paper or Scissors?");, 2000);
+            setTimeout('API.sendChat("@" + data.from + " Rock Paper or Scissors?");', 2000);
             playing = true;
 			chosen = false;
         	player = (data.fromID);
@@ -103,12 +103,12 @@ function game(){
 
 function checkStats() {
 	if (gamesWon != 3 && gamesLost != 3) {
-		setTimeout(API.sendChat("@" + API.getUser(player).username + " Stats: WON: " + gamesWon + " LOST: " + gamesLost + ". Rock Paper or Scissors?");, 2000);
+		setTimeout('API.sendChat("@" + API.getUser(player).username + " Stats: WON: " + gamesWon + " LOST: " + gamesLost + ". Rock Paper or Scissors?");', 2000);
 		userChoice = [];
 		chosen = false;
 	}
 	if (gamesWon == 3 && gamesLost != 3) {
-		setTimeout(API.sendChat("@" + API.getUser(player).username + " Congratulations, " + cookieMsg);, 2000);
+		setTimeout('API.sendChat("@" + API.getUser(player).username + " Congratulations, " + cookieMsg);', 2000);
 		playingTimer = setInterval("checkPlaying()", 1000);
         userChoice = [];
         player = " ";
@@ -119,7 +119,7 @@ function checkStats() {
 	if (gamesWon != 3 && gamesLost == 3) {
 		setTimeout(API.sendChat("@" + API.getUser(player).username + " Shit son, " + kickMsg);, 2000);
 		playingTimer = setInterval("checkPlaying()", 1000);
-		setTimeout(API.moderateKickUser(player, "Ouch unlucky. Great game though. See you in an hour");, 5000);
+		setTimeout('new ModerationKickUserService(player, "Ouch unlucky. Great game though. See you in an hour");', 5000);
         	userChoice = [];
         	setTimeout('player = " ";', 7000);
         	chosen = true;
