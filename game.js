@@ -9,24 +9,24 @@ var playingTimer = null;
 var chosen = true;
 var gamesWon = 0;
 var gamesLost = 0;
-var winMsg = ["dammit I lost, I won't lose the next game", "you win"];
-var loseMsg = ["ha you lose", "in yo' face I won that one"];
-var drawMsg = ["game tied", "dammit we tied"];
-var quitMsg = ["quitting bastard", "whai quit?", "I jizz on the cookie you could have won for quitting!! B==:punch:D:sweat_drops::cookie:"];
-var cookieMsg = ["here is your winning cookie :cookie:"];
-var kickMsg = ["you lost now I get to jizz on you B==:punch:D:sweat_drops:"];
+var winMsg = "dammit I lost, I won't lose the next game";
+var loseMsg = " ha you lose";
+var drawMsg = " game tied";
+var quitMsg = "I jizz on the cookie you could have won for quitting!! B==:punch:D:sweat_drops::cookie:";
+var cookieMsg = " here is your winning cookie :cookie:";
+var kickMsg = " you lost now I get to jizz on you B==:punch:D:sweat_drops:";
 
 function gamesticles(data) {
 	var msg = data.message.toLowerCase();
         if (playing == false && msg.indexOf("/play") > -1) {
-            API.sendChat("@" + data.from + " welcome to Rock Paper Scissors Kick. Win 3 games and get a Cookie, lose 3 games, get kicked from the room. You can quit at anytime by typing /quit.");
-            API.sendChat("@" + data.from + " Rock Paper or Scissors?");
-            playing = true;
-			chosen = false;
+	        API.sendChat("@" + data.from + " welcome to Rock Paper Scissors Kick. Win 3 games and get a Cookie, lose 3 games, get kicked from the room. You can quit at anytime by typing /quit.");
+	        API.sendChat("@" + data.from + " Rock Paper or Scissors?");
+	        playing = true;
+		chosen = false;
         	player = (data.fromID);
         }
         if (playing == true && player.indexOf(data.fromID) > -1 && msg.indexOf("/quit") > -1) {
-        	API.sendChat("@" + data.from + " " + quitMsg[Math.floor(Math.random() * quitMsg.length)] + " Final Score: WON: " + gamesWon + " LOST: " + gamesLost);
+        	API.sendChat("@" + data.from + " " + quitMsg + " Final Score: WON: " + gamesWon + " LOST: " + gamesLost);
         	playingTimer = setInterval("checkPlaying()", 1000);
         	userChoice = [];
         	player = " ";
@@ -69,31 +69,31 @@ function game(){
 	    	if (choice1 == "ROCK") {
 	        	if (choice2 == "SCISSORS") {
 	        		gamesWon = gamesWon + 1;
-	            		return "ROCK beats SCISSORS " + winMsg[Math.floor(Math.random() * winMsg.length)];
+	            		return "ROCK beats SCISSORS " + winMsg;
 	        	}
 	        	else {
 	        		gamesLost = gamesLost + 1;
-	            		return "PAPER beats ROCK " + loseMsgMsg[Math.floor(Math.random() * loseMsg.length)];
+	            		return "PAPER beats ROCK " + loseMsgMsg;
 	        	}
 	    	}
 	    	if (choice1 == "PAPER") {
 	        	if (choice2 == "ROCK") {
 	        		gamesWon = gamesWon + 1;
-	            		return "PAPER beats ROCK " + winMsg[Math.floor(Math.random() * winMsg.length)];
+	            		return "PAPER beats ROCK " + winMsg;
 	        	}
 	        	else {
 	        		gamesLost = gamesLost + 1;
-	            		return "SCISSORS beats PAPER " + loseMsgMsg[Math.floor(Math.random() * loseMsg.length)];
+	            		return "SCISSORS beats PAPER " + loseMsgMsg;
 	        	}
 	    	}
 	    	if (choice1 == "SCISSORS") {
 	        	if (choice2 == "PAPER") {
 	        		gamesWon = gamesWon + 1;
-	            		return "SCISSORS beats PAPER " + winMsg[Math.floor(Math.random() * winMsg.length)];
+	            		return "SCISSORS beats PAPER " + winMsg;
 	        	}
 	        	else {
 	        		gamesLost = gamesLost + 1;
-	            		return "ROCK beats SCISSORS " + loseMsgMsg[Math.floor(Math.random() * loseMsg.length)];
+	            		return "ROCK beats SCISSORS " + loseMsgMsg;
 	        	}
 	    	}
 	};
@@ -108,7 +108,7 @@ function checkStats() {
 		chosen = false;
 	}
 	if (gamesWon == 3) {
-		setTimeout('API.sendChat("@" + API.getUser(player).username + " Congratulations, " + cookieMsg[Math.floor(Math.random() * cookieMsg.length)]);', 2000);
+		setTimeout('API.sendChat("@" + API.getUser(player).username + " Congratulations, " + cookieMsg);', 2000);
 		playingTimer = setInterval("checkPlaying()", 1000);
         	userChoice = [];
         	setTimeout('player = " ";', 7000);
@@ -117,7 +117,7 @@ function checkStats() {
         	gamesLost = 0;
 	}
 	if (gamesLost == 3) {
-		setTimeout('API.sendChat("@" + API.getUser(player).username + " Shit son, " + kwinMsg[Math.floor(Math.random() * winMsg.length)]);', 2000);
+		setTimeout('API.sendChat("@" + API.getUser(player).username + " Shit son, " + kickMsg);', 2000);
 		playingTimer = setInterval("checkPlaying()", 1000);
 		setTimeout('new ModerationKickUserService(player, "Ouch unlucky. Great game though. See you in an hour");', 5000);
         	userChoice = [];
