@@ -55,7 +55,8 @@ var omgMsg = [
 API.addEventListener(API.CHAT, omgsticles);
 
 function omgsticles(data) {
-        if (ohmahgawded == false && data.message.indexOf('omg') > -1) {
+	msg = data.message.toLowerCase();
+        if (ohmahgawded == false && msg.indexOf('omg') > -1) {
         	ohmahgawded = true;
 		ohmahgawdedTimer = setInterval("checkOhmahgawded();", 1000);
         	API.sendChat("OMG alternative" + omgMsg[Math.floor(Math.random() * omgMsg.length)]);
