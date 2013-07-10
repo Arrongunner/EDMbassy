@@ -113,7 +113,7 @@ function game(){
 	        	}
 	        	else {
 	        		gamesLost = gamesLost + 1;
-	            		return "ROCK beats SCISSORS " + loseMsg[Math.floor(Math.random() * loseMsg.length]);
+	            		return "ROCK beats SCISSORS " + loseMsg[Math.floor(Math.random() * loseMsg.length)];
 	        	}
 	    	}
 	};
@@ -188,4 +188,4 @@ function checkPlaying() {
 	else {
 		playingPassed = playingPassed + 1000;
 	}
-}	
+}
