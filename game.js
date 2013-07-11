@@ -3,9 +3,10 @@ API.addEventListener(API.CHAT, gamesticles);
 var userChoice = [];
 var targeted = " ";
 var player = " ";
+var name = " ";
 var playing = false;
 var playingWait = 600000;
-var pGameWait = 300000;
+var pWait = 300000;
 var playingPassed = 0;
 var pPassed = 0;
 var playingTimer = null;
@@ -27,12 +28,12 @@ var targeted = " ";
 
 function gamesticles(data) {
 	var msg = data.message.toLowerCase();
-	if (API.getUser(data.fromID).permission >= 3 && msg.indexOf("/start") > -1) {
+	if (API.getUser(data.fromID).permission >= 2 && msg.indexOf("/start") > -1) {
 		API.sendChat("/me Game Initiated! Starting in T-Minus 10 Minutes");
 		setTimeout("targetPlayer()", 600000);
 		tpTimer = setInterval("targetPlayer();", hr);
 	}
-	if (playing == false && player.indexof(data.fromID) > -1 && msg.indexOf("/pass") > -1) {
+	if (playing == false && player.indexOf(data.fromID) > -1 && msg.indexOf("/pass") > -1) {
 		API.sendChat("/me Player cancelled!");
 		clearInrerval (pTimer);
 		pPassed = 0;
@@ -121,9 +122,9 @@ function game(){
 	checkStats();
 }
 function targetPlayer(){
-	var targeted = API.getWaitList()[Math.floor(Math.random() * API.getWaitList().length)];
-	var player = targeted.id;
-	var name = API.getUser(player).username;
+	targeted = API.getWaitList()[Math.floor(Math.random() * API.getWaitList().length)];
+	player = targeted.id;
+	name = API.getUser(player).username;
 	API.sendChat("@" + name + " you have been randomly selected to play Rock Paper Scissors Kick. Type '/play' within the next 5 minutes to play, or type '/pass' to skip this opportunity");
 	pTimer = setInterval("checkPassed()", 1000);
 	checkGames();
@@ -135,6 +136,7 @@ function checkGames() {
 		clearInterval(playingTimer);
 		playing = false;
 		playingPassed = 0;
+	}
 }	
 		
 function checkStats() {
