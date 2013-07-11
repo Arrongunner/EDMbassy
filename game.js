@@ -4,6 +4,7 @@ var userChoice = [];
 var targeted = " ";
 var player = " ";
 var name = " ";
+var pastPlayers = [];
 var playing = false;
 var playingWait = 600000;
 var pWait = 300000;
@@ -125,7 +126,8 @@ function targetPlayer(){
 	targeted = API.getWaitList()[Math.floor(Math.random() * API.getWaitList().length)];
 	player = targeted.id;
 	name = API.getUser(player).username;
-	API.sendChat("@" + name + " you have been randomly selected to play Rock Paper Scissors Kick. Type '/play' within the next 5 minutes to play, or type '/pass' to skip this opportunity");
+	pastPlayers = targeted.push();
+	API.sendChat("@" + name + " meow");
 	pTimer = setInterval("checkPassed()", 1000);
 	checkGames();
 }
