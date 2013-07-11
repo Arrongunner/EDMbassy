@@ -126,7 +126,7 @@ function targetPlayer(){
 	targeted = API.getWaitList()[Math.floor(Math.random() * API.getWaitList().length)];
 	player = targeted.id;
 	name = API.getUser(player).username;
-	pastPlayers = targeted.push();
+	pastPlayers.push(targeted);
 	API.sendChat("@" + name + " meow");
 	pTimer = setInterval("checkPassed()", 1000);
 	checkGames();
