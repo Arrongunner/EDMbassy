@@ -173,7 +173,7 @@ function checkStats() {
 
 function checkPassed() {
 	if (pPassed >= pWait) {
-		clearInrerval (pTimer);
+		clearInterval (pTimer);
 		pPassed = 0;
 		target = " ";
 		player = " ";
