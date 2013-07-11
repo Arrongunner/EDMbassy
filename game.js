@@ -1,32 +1,3 @@
-var 	mongoose = require('mongoose'),
- 	Schema = mongoose.Schema,
-	ObjectId = mongoose.SchemaTypes.ObjectId;
-	
-//specifies a connection to the local host and to the correct database to be used
-mongoose.connect('localhost', 'miditest');
-
-midifriendSchema = new Schema({
-	firstname: String,
-	lastname: String,
-});
-
-Midifriend = mongoose.model('Midifriend', midifriendSchema);
-
-d3 = new Midifriend({
-	firstname: 'D3',
-	lastname: 'Troit',
-});
-
-doo = new Midifriend({
-	firstname: 'Doo',
-	lastname: 'Fus',
-});
-
-d3.save();
-doo.save();
-console.dir(d3);
-console.dir(doo);
-
 API.addEventListener(API.CHAT, gamesticles);
 
 var userChoice = [];
