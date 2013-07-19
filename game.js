@@ -1,4 +1,4 @@
-API.addEventListener(API.CHAT, gamesticles);
+API.on(API.CHAT, gamesticles);
 
 var userChoice = [];
 var targeted = " ";
