@@ -330,9 +330,9 @@ function initUIListeners() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			if (Models.user.data.status != 3) {
+			if (API.getUsr().status != 3) {
 				API.sendChat(sleepMsg[Math.floor(Math.random() * sleepMsg.length)]);
-				Models.user.changeStatus(3);
+				API.setStatus(API.STATUS.SLEEPING);
 			}
 		}
 	});
@@ -340,9 +340,9 @@ function initUIListeners() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			if (Models.user.data.status != 2) {
+			if (API.getUsr().status != 2) {
 				API.sendChat(workMsg[Math.floor(Math.random() * workMsg.length)]);
-				Models.user.changeStatus(2);
+				API.setStatus(API.STATUS.WORKING);
 			}
 		}
 	});	
@@ -350,9 +350,9 @@ function initUIListeners() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			if (Models.user.data.status != 1) {
+			if (API.getUsr().status != 1) {
 				API.sendChat(afkMsg[Math.floor(Math.random() * afkMsg.length)]);
-				Models.user.changeStatus(1);
+				API.setStatus(API.STATUS.AFK);
 			}
 		}
 	});
@@ -360,9 +360,9 @@ function initUIListeners() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			if (Models.user.data.status != 0) {
+			if (API.getUsr().status != 0) {
 				API.sendChat(backMsg[Math.floor(Math.random() * backMsg.length)]);
-				Models.user.changeStatus(0);
+				API.setStatus(API.STATUS.AVAILABLE);
 			}
 		}
 	});
@@ -370,11 +370,11 @@ function initUIListeners() {
 		if (skipped == false) {
 			skipped = true;
 			skipTimer = setInterval("checkSkipped();", 500);
-			new ModerationForceSkipService;
+			API.moderateForceSkip();
 		}
 	});
 	$("#plug-btn-lock").on("click", function() {
-		new RoomPropsService(document.location.href.split('/')[3],true,true,1,5);
+		API.moderateRoomProps(true,require('app/models/RoomModel').get('waitListEnabled'));
 	});
 	$("#plug-btn-unlock").on("click", function() {
 		new RoomPropsService(document.location.href.split('/')[3],false,true,1,5);
@@ -383,9 +383,9 @@ function initUIListeners() {
 		if (skipped == false) {
 			skipped = true;
 			skipTimer = setInterval("checkSkipped();", 500);
-			new RoomPropsService(document.location.href.split('/')[3],true,true,1,5);
-			new ModerationForceSkipService;
-			new RoomPropsService(document.location.href.split('/')[3],false,true,1,5);
+			API.moderateRoomProps(true, require("app/models/RoomModel").get("waitListEnabled"));
+			API.moderateForceSkip();
+			API.moderateRoomProps(false, require("app/models/RoomModel").get("waitListEnabled"));
 		}
 	});
 }
@@ -416,13 +416,13 @@ function autoRespond(data) {
 		if (API.getUser(data.fromID).status == 0) {
 			mentioned = true;
 			timer = setInterval("checkMentioned();", 1000);
-			if (Models.user.data.status == 1) {
+			if (API.getUser().status == 1) {
 				API.sendChat("@" + data.from + " automsg: " + autoAwayMsg[Math.floor(Math.random() * autoAwayMsg.length)]);
 			}
-			if (Models.user.data.status ==2) {
+			if (API.getUser().status == 2) {
 				API.sendChat("@" + data.from + " automsg: " + autoWrkMsg[Math.floor(Math.random() * autoWrkMsg.length)]);
 			}
-			if (Models.user.data.status ==3) {
+			if (API.getUser().status == 3) {
 				API.sendChat("@" + data.from + " automsg: " + autoSlpMsg[Math.floor(Math.random() * autoSlpMsg.length)]);
 			}
 		}
