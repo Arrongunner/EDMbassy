@@ -374,18 +374,18 @@ function initUIListeners() {
 		}
 	});
 	$("#plug-btn-lock").on("click", function() {
-		API.moderateRoomProps(true,require('app/models/RoomModel').get('waitListEnabled'));
+		API.moderateRoomProps(true, 1);
 	});
 	$("#plug-btn-unlock").on("click", function() {
-		new RoomPropsService(document.location.href.split('/')[3],false,true,1,5);
+		API.moderateRoomProps(false, 1);
 	});
 	$("#plug-btn-lockskip").on("click", function() {
 		if (skipped == false) {
 			skipped = true;
 			skipTimer = setInterval("checkSkipped();", 500);
-			API.moderateRoomProps(true, require("app/models/RoomModel").get("waitListEnabled"));
+			API.moderateRoomProps(true, 1);
 			API.moderateForceSkip();
-			API.moderateRoomProps(false, require("app/models/RoomModel").get("waitListEnabled"));
+			API.moderateRoomProps(false, 1);
 		}
 	});
 }
