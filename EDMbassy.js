@@ -798,8 +798,6 @@ function chatListener() {
 
 delay();
 $('#plugbot-js').remove();
-API.chatLog("Also, welcome to The EDMbassy coded by Nitro Ghost. Version: 4.1.5");
-API.chatLog("type '/commands' to see extra commands");
 $('body').prepend('<script type="text/javascript" id="modcommands-js" src="https://raw.github.com/Snipeglider/Plug/master/modcommands.js" />');
 $('body').prepend('<script type="text/javascript" id="omg-js" src="https://raw.github.com/NitroGhost/EDMbassy/master/blacklist.js" />');
 $('body').prepend('<script type="text/javascript" id="game-js" src="https://raw.github.com/NitroGhost/EDMbassy/master/game.js" />');
