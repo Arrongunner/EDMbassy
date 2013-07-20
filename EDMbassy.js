@@ -1,6 +1,5 @@
 function delay() {
         setTimeout("load();", 6000);
-	setTimeout("chatListener();", 10000);
 }
 
 function load() {
@@ -589,7 +588,6 @@ function checkPredict() {
 }
 
 delay();
-$('#plugbot-js').remove();
 $('body').prepend('<script type="text/javascript" id="omg-js" src="https://raw.github.com/NitroGhost/EDMbassy/master/blacklist.js" />');
 $('body').prepend('<script type="text/javascript" id="game-js" src="https://raw.github.com/NitroGhost/EDMbassy/master/game.js" />');
 $('body').prepend('<style type="text/css" id="plug-css">' + "\n" + styles.join("\n") + "\n" + '</style>');
