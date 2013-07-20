@@ -330,7 +330,7 @@ function initUIListeners() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			if (API.getUsr().status != 3) {
+			if (API.getUser().status != 3) {
 				API.sendChat(sleepMsg[Math.floor(Math.random() * sleepMsg.length)]);
 				API.setStatus(API.STATUS.SLEEPING);
 			}
@@ -340,7 +340,7 @@ function initUIListeners() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			if (API.getUsr().status != 2) {
+			if (API.getUser().status != 2) {
 				API.sendChat(workMsg[Math.floor(Math.random() * workMsg.length)]);
 				API.setStatus(API.STATUS.WORKING);
 			}
@@ -350,7 +350,7 @@ function initUIListeners() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			if (API.getUsr().status != 1) {
+			if (API.getUser().status != 1) {
 				API.sendChat(afkMsg[Math.floor(Math.random() * afkMsg.length)]);
 				API.setStatus(API.STATUS.AFK);
 			}
@@ -360,7 +360,7 @@ function initUIListeners() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			if (API.getUsr().status != 0) {
+			if (API.getUser().status != 0) {
 				API.sendChat(backMsg[Math.floor(Math.random() * backMsg.length)]);
 				API.setStatus(API.STATUS.AVAILABLE);
 			}
