@@ -27,10 +27,6 @@ function readCookies() {
     	streaming = value != null ? value: true;
     	value = jaaulde.utils.cookies.get(COOKIE_HIDE_VIDEO);
     	hideVideo = value != null ? value : false;
-    	var value = jaaulde.utils.cookies.get(COOKIE_EMOTES);
-    	emotes = value != null ? value : true;
-    	var value = jaaulde.utils.cookies.get(COOKIE_AUDIENCE);
-    	audience = value != null ? value : true;
     	var value = jaaulde.utils.cookies.get(COOKIE_LEFT);
     	left = value != null ? value : false;
 	onCookiesLoaded();
@@ -49,9 +45,6 @@ function onCookiesLoaded() {
 	}
 	if (left) {
 		$(".sidebar#side-left").animate({"left": left ? "0px" : "-190px"}, 300, "easeOutCirc");
-	}
-	if (!emotes) Emoji.emojify = function(data) {
-		return data;
 	}
 	if (!audience) {
 		$('#audience').hide();
@@ -117,8 +110,6 @@ var COOKIE_WOOT = 'autowoot';
 var COOKIE_QUEUE = 'autoqueue';
 var COOKIE_STREAMING = 'streaming';
 var COOKIE_HIDE_VIDEO = 'hidevideo';
-var COOKIE_EMOTES = 'emotes';
-var COOKIE_AUDIENCE = 'audience';
 var COOKIE_LEFT = 'left';
 var MAX_USERS_WAITLIST = 50;
 
@@ -410,7 +401,7 @@ function queueUpdate() {
 }
 
 function isInQueue() {
-	var self = API.getSelf();
+	var self = API.getUser();
     	return API.getWaitList().indexOf(self) !== -1 || API.getDJs().indexOf(self) !== -1;
 }
 
@@ -419,12 +410,12 @@ function joinQueue() {
 		$('#button-dj-play').click();
     	} 
 	else if (API.getWaitList().length < MAX_USERS_WAITLIST) {
-        API.waitListJoin();
+        API.djJoin();
     	}
 }
 
 function autoRespond(data) {
-	var a = data.type == "mention" && Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >= Models.user.BOUNCER, b = data.message.indexOf('@') >0;
+	var a = data.type == "mention" && API.getStaff[data.fromID] && API.getStaff[data.fromID] >= API.ROLE.BOUNCER, b = data.message.indexOf('@') >0;
 	if (data.type == "mention" && mentioned == false) {
 		if (API.getUser(data.fromID).status == 0) {
 			mentioned = true;
@@ -466,18 +457,12 @@ function populateUserlist() {
     	var totalWOOTs = 0;
     	var totalUNDECIDEDs = 0;
     	var str = '';
-	var myid = API.getSelf().id;
+	var myid = API.getUser().id;
 	for (i in a) {
-		if (a[i].admin) {
-			a[i].permission = 99;
-		}
-		if (a[i].ambassador) {
-			a[i].permission = 50;
-		}
         	str = '<span class="chat-from-clickable ';
-        	if (typeof (a[i].permission) !== 'undefined' && a[i].permission == 99) {
+        	if (typeof (a[i].permission) !== 'undefined' && a[i].permission == 10) {
             		str += 'chat-from-admin ';
-        	} else if (typeof (a[i].permission) !== 'undefined' && a[i].permission == 50) {
+        	} else if (typeof (a[i].permission) !== 'undefined' && a[i].permission == 9) {
             		str += 'chat-from-ambassador ';
         	}
         	else if (typeof (a[i].permission) !== 'undefined' && a[i].permission == 5) {
@@ -507,7 +492,7 @@ function populateUserlist() {
             		totalWOOTs++;
             		wootlist += str; 
         	}
-        	else if (a[i].id == Models.room.data.currentDJ) {
+        	else if (a[i].id == API.getDJs()[0]) {
         		currentdj += str;
         	}
         	else {
@@ -530,9 +515,9 @@ function populateUserlist() {
             	$('#side-left .sidebar-content2').append();
 	}
         $('#side-left .sidebar-content2').html('<h3 class="users" title="number of users in the room">users: ' + API.getUsers().length + '</h3>');
-        var spot = Models.room.getWaitListPosition();
-        var waitlistDiv = $('<h3 title="waitlist posisition"></h3>').addClass('waitlistspot').text('waitlist: ' + (spot !== null ? spot + ' / ' : '') + Models.room.data.waitList.length);
-        var waitpostime = Models.room.getWaitListPosition() * 240;
+        var spot = API.getWaitListPosition();
+        var waitlistDiv = $('<h3 title="waitlist posisition"></h3>').addClass('waitlistspot').text('waitlist: ' + (spot !== null ? spot + ' / ' : '') + API.getWaitList().length);
+        var waitpostime = API.getWaitListPosition() * 240;
         var offset = API.getMedia().duration - 240;
         var approxtime = waitpostime + offset;
         var timeDiv = $('<h3 title="approx. wait time until on the booth"</h3>').addClass('timewait').text('wait: ' + (spot !== null ? sts(decodeURIComponent(approxtime)) + ' ' : ''));
@@ -758,7 +743,7 @@ function chatListener() {
         		return strobeOnCommand.__super__.constructor.apply(this, arguments);
     		}
     		strobeOnCommand.prototype.init = function() {
-        		this.command = '/strobe on';
+        		this.command = '!strobe on';
         		this.parseType = 'exact';
         		return this.rankPrivelege = 'manager';
     		};
@@ -783,10 +768,10 @@ function chatListener() {
     		return _results;
   	};
   	hook = function(apiEvent, callback) {
-    		return API.addEventListener(apiEvent, callback);
+    		return API.on(apiEvent, callback);
   	};
   	unhook = function(apiEvent, callback) {
-    		return API.removeEventListener(apiEvent, callback);
+    		return API.off(apiEvent, callback);
   	};
   	apiHooks = [
     		{
