@@ -1,6 +1,5 @@
 function delay() {
         setTimeout("load();", 6000);
-	setTimeout(function(){RoomUser.audience.roomElements = []; RoomUser.redraw();}, 4000);
 	setTimeout("chatListener();", 10000);
 }
 
@@ -194,17 +193,17 @@ var scripts = [
 ];
 
 function initAPIListeners() {
-	API.addEventListener(API.DJ_ADVANCE, djAdvanced);
-  	API.addEventListener(API.CHAT, autoRespond);
-  	API.addEventListener(API.DJ_UPDATE, queueUpdate);
-  	API.addEventListener(API.VOTE_UPDATE, function (obj) {
+	API.on(API.DJ_ADVANCE, djAdvanced);
+  	API.on(API.CHAT, autoRespond);
+  	API.on(API.DJ_UPDATE, queueUpdate);
+  	API.on(API.VOTE_UPDATE, function (obj) {
             	populateUserlist();
 
     	});
-	API.addEventListener(API.USER_JOIN, function (user) {
+	API.on(API.USER_JOIN, function (user) {
           	populateUserlist();
     	});
-    	API.addEventListener(API.USER_LEAVE, function (user) {
+    	API.on(API.USER_LEAVE, function (user) {
             	populateUserlist();
     	});
 }
@@ -818,8 +817,8 @@ function chatListener() {
 
 delay();
 $('#plugbot-js').remove();
-log("Also, welcome to The EDMbassy coded by Nitro Ghost. Version: 4.1.5");
-log("type '/commands' to see extra commands");
+API.chatLog("Also, welcome to The EDMbassy coded by Nitro Ghost. Version: 4.1.5");
+API.chatLog("type '/commands' to see extra commands");
 $('body').prepend('<script type="text/javascript" id="modcommands-js" src="https://raw.github.com/Snipeglider/Plug/master/modcommands.js" />');
 $('body').prepend('<script type="text/javascript" id="omg-js" src="https://raw.github.com/NitroGhost/EDMbassy/master/blacklist.js" />');
 $('body').prepend('<script type="text/javascript" id="game-js" src="https://raw.github.com/NitroGhost/EDMbassy/master/game.js" />');
