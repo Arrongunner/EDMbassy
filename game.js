@@ -29,7 +29,7 @@ var targeted = " ";
 
 function gamesticles(data) {
 	var msg = data.message.toLowerCase();
-	if (API.getUser(data.fromID).permission >= 2 && msg.indexOf("!start") > -1) {
+	if (API.getUser(data.fromID).permission >= 0 && msg.indexOf("!start") > -1) {
 		API.sendChat("/me Game Initiated! Starting in T-Minus 10 Minutes");
 		setTimeout("targetPlayer()", 600000);
 		tpTimer = setInterval("targetPlayer();", hr);
