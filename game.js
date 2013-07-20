@@ -29,7 +29,7 @@ var targeted = " ";
 
 function gamesticles(data) {
 	var msg = data.message.toLowerCase();
-	if (API.getUser(data.fromID).permission >= 2 && msg.indexOf("/start") > -1) {
+	if (API.getUser(data.fromID).permission >= 2 && msg.indexOf("!start") > -1) {
 		API.sendChat("/me Game Initiated! Starting in T-Minus 10 Minutes");
 		setTimeout("targetPlayer()", 600000);
 		tpTimer = setInterval("targetPlayer();", hr);
@@ -41,13 +41,13 @@ function gamesticles(data) {
 		target = " ";
 		player = " ";
 	}
-        if (playing == false && player.indexOf(data.fromID) > -1 && msg.indexOf("/play") > -1) {
+        if (playing == false && player.indexOf(data.fromID) > -1 && msg.indexOf("!play") > -1) {
 	        API.sendChat("@" + data.from + " welcome to Rock Paper Scissors Kick. Win 3 games and get a Cookie, lose 3 games, get kicked from the room. You can quit at anytime by typing /quit.");
 	        API.sendChat("@" + data.from + " Rock Paper or Scissors?");
 	        playing = true;
 		chosen = false;
         }
-        if (playing == true && player.indexOf(data.fromID) > -1 && msg.indexOf("/quit") > -1) {
+        if (playing == true && player.indexOf(data.fromID) > -1 && msg.indexOf("!quit") > -1) {
         	API.sendChat("@" + data.from + " " + quitMsg + " Final Score: WON: " + gamesWon + " LOST: " + gamesLost);
         	playingTimer = setInterval("checkPlaying()", 1000);
         	userChoice = [];
