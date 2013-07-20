@@ -204,16 +204,12 @@ function displayUI() {
     	var colorQueue = autoqueue ? '#3FFF00' : '#ED1C24';
     	var colorStream = streaming ? '#3FFF00' : '#ED1C24';
     	var colorVideo = hideVideo ? '#3FFF00' : '#ED1C24';
-    	var colorEmotes = emotes ? '#3FFF00' : '#ED1C24';
-    	var colorAudience = audience ? '#3FFF00' : '#ED1C24';
 	$('#side-right .sidebar-content').append(
 			'<a title="Settings" style="color:#FFFFF">Settings:</a>'
 		+	'<a id="plug-btn-woot" title="Toggle AutoWoot" style="color:' + colorWoot + '">Auto Woot</a>'
 		+ 	'<a id="plug-btn-queue" title="Toggle AutoQueue" style="color:' + colorQueue + '">Auto Queue</a>'
 		+ 	'<a id="plug-btn-stream" title="Toggle Video Stream" style="color:' + colorStream + '">Video Streaming</a>'
 		+ 	'<a id="plug-btn-hidevideo" title="Toggle Video" style="color:' + colorVideo + '">Hide Video</a>'
-		+	'<a id="plug-btn-emotes" title="Toggle Emoticons" style="color:' + colorEmotes + '">Emoticons</a>'
-		+	'<a id="plug-btn-audience" title="Toggle Audience" style="color:' + colorAudience + '">Audience</a>'
 		+	'<a title="Messages" style="color:#FFFFF">Messages:</a>'
 		+	'<a id="plug-btn-rules" title="Sends rules" style="color:#FF8C00">Rules</a>'
 		+	'<a id="plug-btn-face" title="Sends fb and forums links" style="color:#FF8C00">Social Links</a>'
