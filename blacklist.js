@@ -52,7 +52,7 @@ var omgMsg = [
 ];
 		
 
-API.addEventListener(API.CHAT, omgsticles);
+API.on(API.CHAT, omgsticles);
 
 function omgsticles(data) {
 	msg = data.message.toLowerCase();
