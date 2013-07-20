@@ -374,18 +374,18 @@ function initUIListeners() {
 		}
 	});
 	$("#plug-btn-lock").on("click", function() {
-		API.moderateRoomProps(true, 1);
+		API.moderateRoomProps(true, true);
 	});
 	$("#plug-btn-unlock").on("click", function() {
-		API.moderateRoomProps(false, 1);
+		API.moderateRoomProps(false, true);
 	});
 	$("#plug-btn-lockskip").on("click", function() {
 		if (skipped == false) {
 			skipped = true;
 			skipTimer = setInterval("checkSkipped();", 500);
-			API.moderateRoomProps(true, 1);
+			API.moderateRoomProps(true, true);
 			API.moderateForceSkip();
-			API.moderateRoomProps(false, 1);
+			API.moderateRoomProps(false, true);
 		}
 	});
 }
