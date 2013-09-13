@@ -1,4 +1,4 @@
-var ohmahgawded = false;
+/*var ohmahgawded = false;
 var ohmahgawdedWait = 600000;
 var ohmahgawdedPassed = 0;
 var ohmahgawdedTimer = null;
@@ -73,3 +73,4 @@ function checkOhmahgawded() {
 		ohmahgawdedPassed = ohmahgawdedPassed + 1000;
 	}
 }
+*/
