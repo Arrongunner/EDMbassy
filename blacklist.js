@@ -82,11 +82,11 @@ function checkOhmahgawded() {
 API.on(API.CHAT, antispam);
 
 function antispam(chat) {
-	var spam = ["fan4fan", "fan me", "fan 4 fan", "fan for fan"];
+	var spam = ["fan4fan", "fan me", "fan 4 fan", "fan for fan", "fan please", "fan plz", "fan pls"];
 	var msg = chat.message.toLowerCase();
 	var spammer = API.getUser(chat.fromID);
 	if (spam.indexOf(msg) > -1) {
 		API.moderateDeleteChat(chat.chatID);
-		API.sendChat("@" spammer.username " please do not ask for fans");
+		API.sendChat("@" + spammer.username + " please do not ask for fans");
 	};
 };
