@@ -78,3 +78,15 @@ function checkOhmahgawded() {
 		ohmahgawdedPassed = ohmahgawdedPassed + 1000;
 	}
 }
+
+API.on(API.CHAT, antispam);
+
+function antispam(chat) {
+	var spam = ["fan4fan", "fan me", "fan 4 fan", "fan for fan"];
+	var msg = chat.message.toLowerCase();
+	var spammer = API.getUser(chat.fromID);
+	if (spam.indexOf(msg) > -1) {
+		API.moderateDeleteChat(chat.chatID);
+		API.sendChat("@" spammer.username " please do not ask for fans");
+	};
+};
