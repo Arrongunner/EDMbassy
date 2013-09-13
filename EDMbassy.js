@@ -1,5 +1,5 @@
 function delay() {
-        setTimeout("load();", 6000);
+        setTimeout("load();", 500);
 }
 
 function load() {
@@ -72,7 +72,7 @@ return (",pre,blockquote,code,input,button,textarea".indexOf(","+tag) == -1);
 }
 
 var regexs=new Array(),
-    replacements=new Array();
+replacements=new Array();
 for(var word in words) {
 if(word != "") {
 regexs.push(new RegExp("\\b"+word.prepareRegex().replace(/\*/g,'[^ ]*')+"\\b", 'gi'));
