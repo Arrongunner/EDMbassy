@@ -449,7 +449,18 @@ function autoRespond(data) {
 	}
 }
 
-function djAdvanced(obj) {
+function djAdvanced(data) {
+	var obj = {
+             	id: data.media.id,
+              	author: data.media.author,
+          	title: data.media.title,
+           	user: {
+            		id: data.user.id,
+              		username: data.user.username
+              	}
+        };
+        history.unshift(obj);
+        history.splice(50, history.length - 50);
 	if (hideVideo) {
 		$("#yt-frame").css("height", "0px");
 		$("#playback .frame-background").css("opacity", "0.0");
