@@ -340,6 +340,7 @@ setTimeout(function() {
                        	id: a.media.id,
                        	author: a.media.author,
                        	title: a.media.title,
+                       	time: new Date().toLocaleTimeString(),
                        	user: {
                       		id: a.user.id.toString(),
                        		username: a.user.username
@@ -394,6 +395,7 @@ function djAdvanced(data) {
              	id: data.media.id,
               	author: data.media.author,
           	title: data.media.title,
+          	time: new Date().toLocaleTimeString(),
            	user: {
             		id: data.dj.id,
               		username: data.dj.username
