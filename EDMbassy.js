@@ -408,7 +408,7 @@ setTimeout(function() {
                 };
                 history.push(obj);
 	}
-},1000);
+}, 2000);
 
 function queueUpdate() {
 	if (autoqueue && !isInQueue()) {
