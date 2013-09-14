@@ -402,7 +402,7 @@ function historyCheck() {
 			id: a.media.id,
 			author: a.media.author,
 			title: a.media.title,
-			user: = {
+			user: {
 				id: a.user.id.toString(),
 				username: a.user.username,
 			}
