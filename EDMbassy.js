@@ -112,15 +112,7 @@ var COOKIE_HIDE_VIDEO = 'hidevideo';
 var COOKIE_LEFT = 'left';
 var MAX_USERS_WAITLIST = 50;
 
-var rulesMsg = "Rules: We are all friends here. We do not want to see any trolling, spamming or any behaviour that targets any of the moderators or users in the room such as racism, sexism, or harassment."; 
-var rulesMsg2 = "Try to keep song limit to 8 minutes long, everyone else needs time to play songs.";
-var rulesMsg3 = "Above all, have fun and enjoy the music people!";
-var linksMsg = ["to be assigned"];
-var skipMsg = ["Please do not ask to skip songs.", "Asking to skip songs can lead to being kicked!"];
-var fansMsg = ["Please do not ask for fans.", "Earn your fans like the rest of us."];
-var wafflesMsg = ["WAFFLES FOR EVERYONE!! #-(>_<)-#", "did somebody say WAFFLES? #-(>_<)-#", "cheese ca- I mean WAFFLES TIME! #-(>_<)-#", "do you know what it is time for? WAFFLES #-(>_<)-#"];
-var bhvMsg = ["please be appropriate in the chat", "please do not talk like that, control yourself!",  "please be mature in the chat guys"];
-var sleepMsg = ["Bye, i am out for today!", "Going to sleep now.", "Bed time!", "tiredness... taking... over... must sleep"];
+ar sleepMsg = ["Bye, i am out for today!", "Going to sleep now.", "Bed time!", "tiredness... taking... over... must sleep"];
 var workMsg = ["I'm working so mention me if I'm needed.", "I'm going to be busy for a while, mention if needed."];
 var afkMsg = ["Stepping away for a moment.", "Going AFK for a while, be back soon!"];
 var backMsg = ["I have returned", "I'm baaacckkk"];
@@ -212,23 +204,16 @@ function displayUI() {
 		+ 	'<a id="plug-btn-queue" title="Toggle AutoQueue" style="color:' + colorQueue + '">Auto Queue</a>'
 		+ 	'<a id="plug-btn-stream" title="Toggle Video Stream" style="color:' + colorStream + '">Video Streaming</a>'
 		+ 	'<a id="plug-btn-hidevideo" title="Toggle Video" style="color:' + colorVideo + '">Hide Video</a>'
-		+	'<a title="Messages" style="color:#FFFFF">Messages:</a>'
-		+	'<a id="plug-btn-rules" title="Sends rules" style="color:#FF8C00">Rules</a>'
-		+	'<a id="plug-btn-face" title="Sends fb and forums links" style="color:#FF8C00">Social Links</a>'
-		+	'<a id="plug-btn-en" title="Sends English only message" style="color:#FF8C00">English Only</a>'
-		+	'<a id="plug-btn-fans" title="Sends fan message" style="color:#FF8C00">No Fans</a>'
-		+	'<a id="plug-btn-noskip" title="Send no skip message" style="color:#FF8C00">No Skip</a>'
-		+	'<a id="plug-btn-waffles" title="Sends waffle message" style="color:#FF8C00">Waffles</a>'
 		+	'<a title="Changes your status" style="color:#FFFFF">Status:</a>'
 		+	'<a id="plug-btn-sleeping" title="Sends sleep message and sets status to sleeping" style="color:#FF8FEE">Sleeping</a>'
 		+	'<a id="plug-btn-working" title="Sends work message and sets status to working" style="color:#FF8FEE">Working</a>'
 		+	'<a id="plug-btn-afk" title="Sends afk message and sets status to afk" style="color:#FF8FEE">AFK</a>'
 		+	'<a id="plug-btn-back" title="Sends available message and sets status to available" style="color:#FF8FEE">Available</a>'
 		+	'<a title="Moderation" style="color:#FFFFF">Moderation:</a>'
-		+	'<a id="plug-btn-skip" title="Skips current DJ" style="color:#E90E82">skip</a>'
-		+	'<a id="plug-btn-lock" title="Locks booth" style="color:#E90E82">lock</a>'
-		+	'<a id="plug-btn-unlock" title="Unlocks booth" style="color:#E90E82">unlock</a>'
-		+	'<a id="plug-btn-lockskip" title="Locks booth, skips DJ, then unlocks booth" style="color:#E90E82">lockskip</a>'
+		+	'<a id="plug-btn-skip" title="Skips current DJ" style="color:#E90E82">Skip</a>'
+		+	'<a id="plug-btn-lock" title="Locks booth" style="color:#E90E82">Lock</a>'
+		+	'<a id="plug-btn-unlock" title="Unlocks booth" style="color:#E90E82">Unlock</a>'
+		+	'<a id="plug-btn-lockskip" title="Locks booth, skips DJ, then unlocks booth" style="color:#E90E82">Lockskip</a>'
     );
 }
 
