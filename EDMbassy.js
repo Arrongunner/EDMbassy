@@ -394,7 +394,7 @@ function initUIListeners() {
 };
 
 function historyCheck() {
-	var history = [];
+	history = [];
 	var data = API.getHistory();
 	for (i in data) {
 		var a = data[i];
@@ -406,7 +406,7 @@ function historyCheck() {
 				id: a.user.id.toString(),
 				username: a.user.username,
 			}
-		}
+		};
 		history.push(obj);
 	}
 };
