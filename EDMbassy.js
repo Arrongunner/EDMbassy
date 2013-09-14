@@ -450,6 +450,7 @@ function autoRespond(data) {
 }
 
 function djAdvanced(data) {
+	History(data.media.id);
 	var obj = {
              	id: data.media.id,
               	author: data.media.author,
@@ -471,6 +472,17 @@ function djAdvanced(data) {
 	if (predictor == false) {
 		predictor = true;
 		predictTimer = setInterval("checkPredict()", 1000);
+	}
+}
+
+function History(id) {
+	var found = -1;
+	for (var i in history) {
+		var a = history[i];
+		if (a.id == id && (~~i + 2) < 51) {
+			found = ~~i + 2;
+			return API.chatLog("Song is in History " + found + " of " + history.length), true;
+		}
 	}
 }
 
