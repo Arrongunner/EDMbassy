@@ -455,8 +455,8 @@ function djAdvanced(data) {
               	author: data.media.author,
           	title: data.media.title,
            	user: {
-            		id: data.user.id,
-              		username: data.user.username
+            		id: data.dj.id,
+              		username: data.dj.username
               	}
         };
         history.unshift(obj);
