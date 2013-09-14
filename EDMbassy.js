@@ -112,7 +112,7 @@ var COOKIE_HIDE_VIDEO = 'hidevideo';
 var COOKIE_LEFT = 'left';
 var MAX_USERS_WAITLIST = 50;
 
-ar sleepMsg = ["Bye, i am out for today!", "Going to sleep now.", "Bed time!", "tiredness... taking... over... must sleep"];
+var sleepMsg = ["Bye, i am out for today!", "Going to sleep now.", "Bed time!", "tiredness... taking... over... must sleep"];
 var workMsg = ["I'm working so mention me if I'm needed.", "I'm going to be busy for a while, mention if needed."];
 var afkMsg = ["Stepping away for a moment.", "Going AFK for a while, be back soon!"];
 var backMsg = ["I have returned", "I'm baaacckkk"];
