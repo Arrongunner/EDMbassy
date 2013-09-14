@@ -577,7 +577,7 @@ $('body').prepend('<script type="text/javascript" id="commands-js" src="https://
 $('body').append('</div><div id="side-right" class="sidebar">' + '<div class="sidebar-handle"><span>|||</span></div>' + '<div class="sidebar-content"></div>' + '<div id="hr-div"><div><div id="hr-style"></div></div></div>' + '</div><div id="side-left" class="sidebar">' + '<div class="sidebar-handle" title="show/hide userlist"><span>|||</span></div>' + '<div class="sidebar-content2"></div>' + '<div id="hr2-div2"><div><div id="hr2-style2"></div></div></div>' + '</div>');
 $('body').append('<script type="text/javascript" id="plug-js-extra">' + "\n" + scripts.join("\n") + "\n" + '</script>');
 
-define('app/models/3rd/EmojiUI',
+setTimeout(define('app/models/3rd/EmojiUI',
 	[
 		'jquery',
 		'app/base/Class',
@@ -1696,4 +1696,4 @@ define('app/models/3rd/EmojiUI',
 
 	// return
 	return new EmojiUI;
-});
+});, 3000);
