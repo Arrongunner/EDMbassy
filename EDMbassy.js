@@ -252,53 +252,6 @@ function initUIListeners() {
 		$("#playback .frame-background").animate({"opacity": (hideVideo ? "0" : "0.91")}, {duration: "medium"});
 		jaaulde.utils.cookies.set(COOKIE_HIDE_VIDEO, hideVideo);
 	});
-	$("#plug-btn-emotes").on("click", function() {
-		emotes = !emotes;
-		$(this).css("color", emotes ? "#3FFF00" : "#ED1C24");
-		if (emotes) {
-			Emoji.emojify = function(a) {
-				var b=!1;": "==a.substr(0,2)&&(b=!0,a=a.substr(2));for(var c in Emoji._cons)var d=c,e=Emoji._cons[c],d=d.replace("<","&lt;").replace(">","&gt;"),d=RegExp("(\\s|^)("+Emoji._regexEscape(d)+")(?=\\s|$)","g"),a=a.replace(d,"$1:"+e+":");for(c=Emoji._matchStr.exec(a);c;)e=c[1].toLowerCase(),d="&colon;"+e+"&colon;",Emoji._map[e]&&(d='<span class="emoji-glow"><span class="emoji emoji-'+Emoji._map[e]+'"></span></span>'),a=a.substr(0,c.index)+d+a.substr(c.index+c[0].length),c=Emoji._matchStr.exec(a);return(b?": ":"")+a
-			}
-		}
-		if (!emotes) Emoji.emojify = function(data) {
-			return data;
-		}
-		jaaulde.utils.cookies.set(COOKIE_EMOTES, emotes);
-	});
-	$("#plug-btn-audience").on("click", function() {
-		audience = !audience;
-		$(this).css("color", audience ? "#3FFF00" : "#ED1C24");
-		if (audience) {
-			$('#audience').show();
-		}
-		if (!audience) {
-			$('#audience').hide();
-		}
-		jaaulde.utils.cookies.set(COOKIE_AUDIENCE, audience);
-	});
-	$("#plug-btn-rules").on("click", function() {
-		if (clicked == false) {
-			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
-			API.sendChat(rulesMsg);
-                        setTimeout("API.sendChat(rulesMsg2)", 1500);
-                        setTimeout("API.sendChat(rulesMsg3)", 3000);
-		}
-	});
-	$("#plug-btn-en").on("click", function() {
-		if (clicked == false) {
-			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
-		API.sendChat(enMsg[Math.floor(Math.random() * enMsg.length)]);
-		}
-	});
-	$("#plug-btn-fans").on("click", function() {
-		if (clicked == false) {
-			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
-			API.sendChat(fansMsg[Math.floor(Math.random() * fansMsg.length)]);
-		}
-	});
 	$("#plug-btn-noskip").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
