@@ -52,7 +52,6 @@ function onCookiesLoaded() {
     	displayUI();
     	initUIListeners();
     	populateUserlist();
-    	historyCheck();
 }
 
 var words = {
@@ -393,23 +392,23 @@ function initUIListeners() {
 	});
 };
 
-function historyCheck() {
+setTimeout(function() {
 	history = [];
 	var data = API.getHistory();
-	for (i in data) {
-		var a = data[i];
-		obj = {
-			id: a.media.id,
-			author: a.media.author,
-			title: a.media.title,
-			user: {
-				id: a.user.id.toString(),
-				username: a.user.username,
-			}
-		};
-		history.push(obj);
+        for (var i in data) {
+        	var a = data[i],
+                obj = {
+                       	id: a.media.id,
+                       	author: a.media.author,
+                       	title: a.media.title,
+                       	user: {
+                      		id: a.user.id.toString(),
+                       		username: a.user.username
+                       	}
+                };
+                history.push(obj);
 	}
-};
+},1000);
 
 function queueUpdate() {
 	if (autoqueue && !isInQueue()) {
