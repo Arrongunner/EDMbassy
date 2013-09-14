@@ -196,6 +196,9 @@ function initAPIListeners() {
     	API.on(API.USER_LEAVE, function (user) {
             	populateUserlist();
     	});
+    	API.on(API.WAIT_LIST_UPDATE, function (user){
+    		populateUserlist();
+    	});
 }
 
 function displayUI() {
