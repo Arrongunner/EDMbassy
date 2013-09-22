@@ -416,7 +416,7 @@ function djAdvanced(data) {
 	}
 }
 
-function History(id) {
+/*function History(id) {
 	var found = -1;
 	for (var i in history) {
 		var a = history[i];
@@ -426,6 +426,7 @@ function History(id) {
 		}
 	}
 }
+*/
 
 function populateUserlist() {
 	var currentdj = '';
