@@ -422,7 +422,7 @@ function History(id) {
 		var a = history[i];
 		if (a.id == id && (~~i + 2) < 51) {
 			found = ~~i + 2;
-			return API.chatLog("Song is in History " + found + " of " + history.length), true;
+			return API.chatLog("Song is in History " + found + "/" + history.length), API.sendChat("sorry the song is on the history " + found + "/" + history.length), API.moderateForceSkip(),  true;
 		}
 	}
 }
