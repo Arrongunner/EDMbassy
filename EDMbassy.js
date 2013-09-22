@@ -416,17 +416,17 @@ function djAdvanced(data) {
 	}
 }
 
-/*function History(id) {
+function History(id) {
 	var found = -1;
 	for (var i in history) {
 		var a = history[i];
 		if (a.id == id && (~~i + 2) < 51) {
 			found = ~~i + 2;
-			return API.chatLog("Song is in History " + found + "/" + history.length), API.sendChat("sorry the song is on the history " + found + "/" + history.length), API.moderateForceSkip(),  true;
+			return API.chatLog("Song is in History " + found + "/" + history.length), true;
 		}
 	}
 }
-*/
+
 
 function populateUserlist() {
 	var currentdj = '';
