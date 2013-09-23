@@ -226,7 +226,6 @@ function initUIListeners() {
 	});
 	$("#plug-btn-woot").on("click", function() {
 		autowoot = !autowoot;
-		$(this).css("color", autowoot ? "#3FFF00" : "#ED1C24");
 		if (autowoot) {
 			$('#button-vote-positive').click();
 		}
@@ -234,7 +233,6 @@ function initUIListeners() {
 	});
 	$("#plug-btn-queue").on("click", function() {
 		autoqueue = !autoqueue;
-        	$(this).css('color', autoqueue ? '#3FFF00' : '#ED1C24');
         	if (autoqueue && !isInQueue()) {
         		joinQueue();
         	}
@@ -242,13 +240,11 @@ function initUIListeners() {
 	});
 	$("#plug-btn-stream").on("click", function() {
 		streaming = !streaming;
-		$(this).css("color", streaming ? "#3FFF00" : "#ED1C24");
 		API.sendChat(DB.settings.streamDisabled ? '/stream on' : '/stream off');
 		jaaulde.utils.cookies.set(COOKIE_STREAMING, streaming);
 	});
 	$("#plug-btn-hidevideo").on("click", function() {
 		hideVideo = !hideVideo;
-		$(this).css("color", hideVideo ? "#3FFF00" : "#ED1C24");
 		$("#yt-frame").animate({"height": (hideVideo ? "0px" : "271px")}, {duration: "fast"});
 		$("#playback .frame-background").animate({"opacity": (hideVideo ? "0" : "0.91")}, {duration: "medium"});
 		jaaulde.utils.cookies.set(COOKIE_HIDE_VIDEO, hideVideo);
